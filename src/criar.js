@@ -30,3 +30,11 @@ function criarHTML() {
     window.location.href = "/index.html";
   }, 500);
 }
+
+let aba = document.querySelector(".instrucoes");
+let icone = document.querySelector(".icone");
+
+aba.addEventListener("click", function () {
+  html.classList.toggle("expandir");
+  body.classList.toggle("expandir");
+});

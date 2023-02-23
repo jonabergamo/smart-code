@@ -21,6 +21,7 @@
   --botaoTxt: white;
   --input-fundo: white;
   --peso: 300;
+  --fundoTranparencia: rgba(32, 32, 32, 0.92);
 }
 
 .white-mode:root {
@@ -36,6 +37,7 @@
   --botaoTxt: rgb(3, 3, 3);
   --input-fundo: white;
   --peso: 500;
+  --fundoTranparencia: rgba(255, 255, 255, 0.048);
 }
 
 body {
@@ -47,24 +49,26 @@ body {
 }
 
 textarea::-webkit-scrollbar {
-  width: 5px;             /* width of the entire scrollbar */
+  width: 0px; /* width of the entire scrollbar */
 }
 
 textarea::-webkit-scrollbar-track {
-  background: rgb(198, 198, 198); 
-  border-radius: 20px;     /* color of the tracking area */
+  background: rgb(198, 198, 198);
+  border-radius: 20px; /* color of the tracking area */
 }
 
 textarea::-webkit-scrollbar-thumb {
-  background-color: rgb(46, 46, 46);    /* color of the scroll thumb */
-  border-radius: 20px;       /* roundness of the scroll thumb */  /* creates padding around scroll thumb */
+  background-color: rgb(46, 46, 46); /* color of the scroll thumb */
+  border-radius: 20px; /* roundness of the scroll thumb */ /* creates padding around scroll thumb */
 }
 .inputs {
   display: flex;
   gap: 50px;
   justify-content: center;
+
 }
-#JS_input, #HTML_input {
+#JS_input,
+#HTML_input {
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -75,7 +79,7 @@ main {
   align-items: center;
   justify-content: center;
   padding: 50px;
-  width: 800px;
+  width: 50%;
   min-height: 500px;
   height: auto;
   box-shadow: 0px 0px 14px -3px black;
@@ -87,9 +91,9 @@ textarea {
   margin-top: 15px;
   padding: 15px;
   background: var(--input-fundo);
-  border-radius: 12px;
-  width: 350px;
-  height: 300px;
+  border-radius: 10px;
+  width: 100%;
+  height: 100%;
   display: flex;
   justify-content: flex-start;
   border-style: none;
@@ -117,4 +121,84 @@ textarea {
 }
 #btnSubmit:hover {
   transform: scale(110%);
+}
+
+:root {
+  --comp: 40px;
+  --alt: 60px;
+  --corFundo: var(--botao);
+}
+.expandir:root {
+  --comp: 350px;
+  --alt: 300px;
+  --corFundo: var(--fundoTranparencia);
+}
+
+.instrucoes {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: var(--comp);
+  height: var(--alt);
+  left: 0px;
+  background: var(--corFundo);
+  border-radius: 0px 10px 10px 0px;
+  transition: 0.3s;
+  cursor: pointer;
+}
+.instrucoes:hover {
+  width: 65px;
+}
+
+.expandir .instrucoes .icone {
+  display: none;
+}
+.expandir .instrucoes:hover {
+  width: 400px;
+}
+.expandir .instrucoes {
+  align-items: flex-start;
+  backdrop-filter: blur(10px) saturate(177%);
+  -webkit-backdrop-filter: blur(16px) saturate(177%);
+  border: 1px solid rgba(255, 255, 255, 0.125);
+  box-shadow: 0px 4px 18px rgba(0, 0, 0, 0.25);
+}
+.expandir .instrucoes .textos {
+  color: var(--texto);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  gap: 15px;
+  width: 250px;
+  margin-left: 25px;
+  margin-top: 15px;
+  user-select: none;
+  opacity: 1;
+  transition: 6s;
+}
+
+ul {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+.instrucoes .textos {
+  display: none;
+  opacity: 0;
+}
+.icone {
+  display: initial;
+  width: 30px;
+  transition: 0.3s;
+}
+
+.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
 }

@@ -7,10 +7,22 @@
     <link rel="stylesheet" href="./css/criar.css" />
   </head>
   <body>
+    <div class="instrucoes">
+      <div class="textos">
+          <h1>Instruções</h1>
+        <ul>
+          <li>Os metadados da head não são necessários;</li>
+          <li>divs atuam sempre como flex-direction row;</li>
+          <li>Botões devem ser inseridos utilizando a tag button</li>
+          <li>Inputs devem ser inseridos utilizando a tag input</li>
+        </ul>
+      </div>
+      <img class="icone"src="./src/img/Vector.svg" alt="">
+    </div>
     <main>
       <div class="inputs">
         <div id="HTML_input">
-          <label for="">HTML (Apenas o body)</label>
+          <label for="">HTML</label>
           <textarea spellcheck = "false" id="html_enter" cols="30" rows="10"></textarea>
         </div>
         <div id="JS_input">
@@ -18,7 +30,7 @@
           <textarea  spellcheck = "false" id="js_enter" cols="30" rows="10"></textarea>
         </div>
       </div>
-      <button type="submit" id="btnSubmit" onclick="criarHTML()">Confirmar</button>
+      <button type="submit" id="btnSubmit" onclick="criarHTML()">Run</button>
     </main>
   </body>
   <!-- Para adicionar o codigo da logica JS va para pasta SRC no aquivo main.js -->

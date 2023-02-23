@@ -5,8 +5,6 @@ const main = document.querySelector("main");
 var data = new Date();
 var horas = data.getHours();
 
-console.log(horas);
-
 window.addEventListener("load", function () {
   if (horas < 18) {
     html.classList.toggle("white-mode");
@@ -15,4 +13,4 @@ window.addEventListener("load", function () {
 });
 
 main.innerHTML += dados.html;
-body.innerHTML += "<script>" + dados.js + "</script>";
+eval(dados.js)
