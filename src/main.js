@@ -1,5 +1,7 @@
+var dados = JSON.parse(localStorage.getItem("dados") || "[]");
 const html = document.querySelector("html");
 const body = document.querySelector("body");
+const main = document.querySelector("main");
 var data = new Date();
 var horas = data.getHours();
 
@@ -12,5 +14,5 @@ window.addEventListener("load", function () {
   }
 });
 
-//cole aqui o código JS da sua lógica 
-
+main.innerHTML += dados.html;
+body.innerHTML += "<script>" + dados.js + "</script>";

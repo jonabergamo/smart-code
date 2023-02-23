@@ -45,14 +45,35 @@ body {
   background: var(--fundo);
   color: var(--texto);
 }
-body::-webkit-scrollbar {
-  width: 12px;               /* width of the entire scrollbar */
+
+textarea::-webkit-scrollbar {
+  width: 5px;             /* width of the entire scrollbar */
+}
+
+textarea::-webkit-scrollbar-track {
+  background: rgb(198, 198, 198); 
+  border-radius: 20px;     /* color of the tracking area */
+}
+
+textarea::-webkit-scrollbar-thumb {
+  background-color: rgb(46, 46, 46);    /* color of the scroll thumb */
+  border-radius: 20px;       /* roundness of the scroll thumb */  /* creates padding around scroll thumb */
+}
+.inputs {
+  display: flex;
+  gap: 50px;
+  justify-content: center;
+}
+#JS_input, #HTML_input {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 main {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   padding: 50px;
   width: 800px;
   min-height: 500px;
@@ -60,85 +81,22 @@ main {
   box-shadow: 0px 0px 14px -3px black;
   border-radius: 15px;
 }
-input {
-  text-align: center;
-  font-size: 1.3rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 700px;
-  height: 200px;
-}
-.titulo h1 {
-  width: 600px;
+textarea {
   text-align: left;
-  font-size: 28px;
-  margin-top: 30px;
-  margin-bottom: 10px;
-}
-.titulo p b:nth-child(1) {
-  font-size: 20px;
-}
-.titulo b {
-  font-weight: bold;
-}
-.titulo p {
-  word-break: normal;
-  text-align: justify;
-  font-size: 18px;
-  line-height: 25px;
-}
-.inputOutput {
-  display: flex;
-  flex-direction: column;
-}
-input {
+  font-size: 1rem;
+  margin-top: 15px;
+  padding: 15px;
   background: var(--input-fundo);
   border-radius: 12px;
-  width: 100px;
-  height: 40px;
+  width: 350px;
+  height: 300px;
+  display: flex;
+  justify-content: flex-start;
   border-style: none;
+  resize: none;
 }
-.Input {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 2%;
-  gap: 30px;
-}
-.Input p{
-  padding-top: 10px;
-  font-weight: 700;
-}
-.output{
-  margin-top: 5%;
-  display: flex;
-  justify-content: center;
-  gap: 30px;
-}
-#result {
-  padding: 10px;
-  background-color: var(--input-fundo);
-  color: black;
-  border-radius: 12px;
-  width: auto;
-  min-width: 100px;
-  max-width: 500px;
-  height: auto;
-  min-height: 40px;
-  word-break: break-all;
-  border-style: none;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.buttons {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-}
-button {
-  border-style: none;
+
+#btnSubmit {
   width: 140px;
   height: 60px;
   display: flex;
@@ -152,10 +110,11 @@ button {
   transition: 0.2s;
   color: white;
   font-weight: 500;
+  border-style: none;
   align-items: center;
   font-size: 1.3rem;
   cursor: pointer;
 }
-button:hover {
+#btnSubmit:hover {
   transform: scale(110%);
 }
