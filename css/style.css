@@ -10,7 +10,7 @@
   font-weight: var(--peso);
 }
 :root {
-  --fundo: linear-gradient(241.29deg, #4d4a50 10.31%, #1a1919 93.41%);
+  --fundo: linear-gradient(241.29deg, #111111 10.31%, #1a1919 93.41%);
   --texto: white;
   --botao: linear-gradient(
     257.91deg,
@@ -21,6 +21,7 @@
   --botaoTxt: white;
   --input-fundo: white;
   --peso: 300;
+  --fundoTranparencia: rgba(32, 32, 32, 0.92);
 }
 
 .white-mode:root {
@@ -36,6 +37,7 @@
   --botaoTxt: rgb(3, 3, 3);
   --input-fundo: white;
   --peso: 500;
+  --fundoTranparencia: rgba(107, 107, 107, 0.112);
 }
 
 body {
@@ -57,8 +59,11 @@ main {
   width: 50%;
   min-height: 500px;
   height: auto;
-  box-shadow: 0px 0px 14px -3px black;
-  border-radius: 15px;
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  background-color: var(--fundoTranparencia);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.125);
 }
 input {
   text-align: center;
