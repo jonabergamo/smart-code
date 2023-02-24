@@ -14,3 +14,9 @@ window.addEventListener("load", function () {
 
 main.innerHTML += dados.html;
 eval(dados.js)
+
+var btnVoltar = document.querySelector(".voltar");
+
+function voltar() {
+  window.location.href = "/criar.html";
+}

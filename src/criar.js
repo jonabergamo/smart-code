@@ -33,8 +33,18 @@ function criarHTML() {
 
 let aba = document.querySelector(".instrucoes");
 let icone = document.querySelector(".icone");
+var textos = document.querySelector(".textos");
 
 aba.addEventListener("click", function () {
+  if (textos.style.display == 'flex') {
+    textos.style.display = 'none';
+  } else {
+    setTimeout(function () {
+      textos.style.display = 'flex';
+    }, 150);
+  }
+
   html.classList.toggle("expandir");
   body.classList.toggle("expandir");
 });
+
