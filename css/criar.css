@@ -77,12 +77,14 @@ body::-webkit-scrollbar-thumb {
 }
 
 .inputs {
+  width: 95%;
   display: flex;
   gap: 50px;
   justify-content: center;
 }
 #JS_input,
 #HTML_input {
+  width: 500px;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -92,8 +94,7 @@ main {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 50px;
-  width: 80%;
+  width: 60vw;
   min-height: 500px;
   height: auto;
   backdrop-filter: blur(16px) saturate(180%);
@@ -116,14 +117,11 @@ textarea {
   padding: 15px;
   background: var(--input-fundo);
   border-radius: 10px;
-  width: 100%;
   height: 100%;
-  min-height: 300px;
-  min-width: 430px;
+  width: 100%;
   display: flex;
   justify-content: flex-start;
   border-style: none;
-  resize: vertical;
 }
 
 #btnSubmit {
@@ -205,9 +203,10 @@ textarea {
   display: none;
 }
 .expandirCriar .criarElemento:hover {
-  width: 400px;
+  width: 350px;
 }
 .expandirCriar .criarElemento {
+  cursor: initial;
   align-items: flex-start;
   backdrop-filter: blur(10px) saturate(177%);
   -webkit-backdrop-filter: blur(16px) saturate(177%);
@@ -281,9 +280,11 @@ input:nth-child(3) {
   gap:10px;
 }
 
-#btnCriar {
+#btnCriar, #btnCopiar {
   width: 40px;
+  min-width: 40px;
   height: 40px;
+  min-height: 40px;
   display: flex;
   justify-content: center;
   font-size: 1rem;
@@ -303,7 +304,10 @@ input:nth-child(3) {
 #btnCriar:hover {
   transform: scale(110%);
 }
-#btnCriar img{
+#btnCopiar:hover {
+  transform: scale(110%);
+}
+#btnCriar, #btnCopiar img{
   width: 30px;
 }
 .textosCriar {
@@ -317,9 +321,10 @@ input:nth-child(3) {
   display: none;
 }
 .expandir .instrucoes:hover {
-  width: 400px;
+  width: 350px;
 }
 .expandir .instrucoes {
+  cursor: initial;
   align-items: flex-start;
   backdrop-filter: blur(10px) saturate(177%);
   -webkit-backdrop-filter: blur(16px) saturate(177%);
@@ -375,8 +380,8 @@ ul {
 
 .btnLimpaHTML {
   position: absolute;
-  left: 35px;
-  top: 55px;
+  left: 3%;
+  top: 13%;
   width: 900px;
   align-items: center;
   
@@ -388,8 +393,8 @@ ul {
 
 .btnLimpaJS {
   position: absolute;
-  right: 35px;
-  top: 55px;
+  right: 3%;
+  top: 13%;
   width: 900px;
   align-items: center;
   
@@ -397,4 +402,26 @@ ul {
 
 .btnLimpaJS img {
   transform: rotate(45deg);
+}
+
+#copiadoAlert {
+  transform: translateY(-40px);
+  z-index: -100;
+  align-items: center;
+  display: flex;
+  opacity: 0;
+  justify-content: center;
+  left: 30%;
+  position: absolute;
+  height: 15%;
+  width: 100px;
+  backdrop-filter: blur(10px) saturate(177%);
+  -webkit-backdrop-filter: blur(16px) saturate(177%);
+  border: 1px solid rgba(21, 253, 0, 0.253);
+  border-radius: 15px;
+  transition: .3s;
+}
+
+#copiadoAlert h1 {
+  font-size: 0.9rem;
 }

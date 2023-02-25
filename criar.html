@@ -9,6 +9,7 @@
   </head>
   <body>
     <div class="criarElemento">
+      <div id="copiadoAlert"><h1>Copiado!</h1></div>
       <div class="textosCriar">
         <h1>Adicionar Elemento</h1>
         <div>
@@ -41,6 +42,7 @@
             />
           </div>
           <button id="btnCriar"><img src="/src/img/mais.svg" alt="" /></button>
+          <button id="btnCopiar"><img src="/src/img/copy.svg" alt="" /></button>
         </div>
       </div>
       <img class="iconeCriar" src="./src/img/criarElemento.svg" alt="" />
@@ -60,7 +62,6 @@
 
     <main>
       <div class="inputs">
-        <button type="reset" id="btnCriar" class="btnLimpaHTML" onclick="resetHTML()"><img src="./src/img/mais.svg" alt=""></button>
         <div id="HTML_input">
           <label for="">HTML</label>
           <textarea
@@ -69,7 +70,6 @@
             cols="30"
             rows="10"
           ></textarea>
-          <button type="reset" id="btnCriar" class="btnLimpaJS" onclick="resetJS()"><img src="./src/img/mais.svg" alt=""></button>
         </div>
         <div id="JS_input">
           <label for="">JS</label>
