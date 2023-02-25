@@ -8,6 +8,19 @@
     <link rel="shortcut icon" href="./src/img/favicon.svg" type="image/svg" />
   </head>
   <body>
+    <div class="cardTela">
+      <div class="card__contentTela">
+        <h2>Salvar</h2>
+        <input type="text" name="" id="saveName" placeholder="Nome"/>
+        <button
+          type="submit"
+          id="btnConfirmaSave"
+          onclick="confirmaSave()"
+        >
+          Confirmar
+        </button>
+      </div>
+    </div>
     <div class="criarElemento">
       <div id="copiadoAlert"><h1>Copiado!</h1></div>
       <div class="textosCriar">
@@ -27,19 +40,9 @@
                 <option value="id" selected>ID</option>
                 <option value="class">Class</option>
               </select>
-              <input
-                type="text"
-                placeholder="Name"
-                id="nomeTipo"
-                class=""
-              />
+              <input type="text" placeholder="Name" id="nomeTipo" class="" />
             </div>
-            <input
-              type="text"
-              placeholder="Contéudo"
-              id="content"
-              class=""
-            />
+            <input type="text" placeholder="Contéudo" id="content" class="" />
           </div>
           <button id="btnCriar"><img src="/src/img/mais.svg" alt="" /></button>
           <button id="btnCopiar"><img src="/src/img/copy.svg" alt="" /></button>
@@ -81,8 +84,16 @@
           ></textarea>
         </div>
       </div>
-        <button type="submit" id="btnSubmit" onclick="criarHTML()">Run</button>
+      <button type="submit" id="btnSubmit" onclick="criarHTML()">Run</button>
     </main>
+    <div class="card">
+      <div class="card__content">
+        <button id="btnSalvar"><img src="/src/img/save.svg" alt="" /></button>
+        <h2>Salvos</h2>
+        <ul id="ulContainer">
+        </ul>
+      </div>
+    </div>
   </body>
   <script src="./src/criar.js"></script>
 </html>
