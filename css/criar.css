@@ -8,6 +8,7 @@
   box-sizing: border-box;
   font-family: "Montserrat", sans-serif;
   font-weight: var(--peso);
+  user-select: none;
 }
 :root {
   --fundo: linear-gradient(241.29deg, #111111 10.31%, #1a1919 93.41%);
@@ -61,11 +62,24 @@ textarea::-webkit-scrollbar-thumb {
   background-color: rgb(46, 46, 46); /* color of the scroll thumb */
   border-radius: 20px; /* roundness of the scroll thumb */ /* creates padding around scroll thumb */
 }
+body::-webkit-scrollbar {
+  height: 5px; /* width of the entire scrollbar */
+}
+
+body::-webkit-scrollbar-track {
+  background: rgb(198, 198, 198);
+  border-radius: 20px; /* color of the tracking area */
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: rgb(46, 46, 46); /* color of the scroll thumb */
+  border-radius: 20px; /* roundness of the scroll thumb */ /* creates padding around scroll thumb */
+}
+
 .inputs {
   display: flex;
   gap: 50px;
   justify-content: center;
-
 }
 #JS_input,
 #HTML_input {
@@ -87,6 +101,13 @@ main {
   background-color: var(--fundoTranparencia);
   border-radius: 12px;
   border: 1px solid rgba(255, 255, 255, 0.125);
+  transition: .3s;
+}
+.expandirCriar main{
+  margin-left: 550px;
+}
+.expandir main{
+  margin-left: 550px;
 }
 textarea {
   text-align: left;
@@ -102,7 +123,7 @@ textarea {
   display: flex;
   justify-content: flex-start;
   border-style: none;
-  resize:vertical;
+  resize: vertical;
 }
 
 #btnSubmit {
@@ -131,12 +152,20 @@ textarea {
 :root {
   --comp: 40px;
   --alt: 60px;
+  --compCriar: 40px;
+  --altCriar: 60px;
   --corFundo: var(--botao);
+  --corFundoCriar: var(--botao);
 }
 .expandir:root {
   --comp: 350px;
   --alt: 300px;
   --corFundo: var(--fundoTranparencia);
+}
+.expandirCriar:root {
+  --compCriar: 350px;
+  --altCriar: 180px;
+  --corFundoCriar: var(--fundoTranparencia);
 }
 
 .instrucoes {
@@ -147,12 +176,138 @@ textarea {
   align-items: center;
   width: var(--comp);
   height: var(--alt);
-  top: 40vh;
+  top: 50vh;
   left: 0px;
   background: var(--corFundo);
   border-radius: 0px 10px 10px 0px;
   transition: 0.3s;
   cursor: pointer;
+}
+.criarElemento {
+  position: fixed;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: var(--compCriar);
+  height: var(--altCriar);
+  top: 10vh;
+  left: 0px;
+  background: var(--corFundoCriar);
+  border-radius: 0px 10px 10px 0px;
+  transition: 0.3s;
+  cursor: pointer;
+}
+.criarElemento:hover {
+  width: 65px;
+}
+.expandirCriar .criarElemento .iconeCriar {
+  display: none;
+}
+.expandirCriar .criarElemento:hover {
+  width: 400px;
+}
+.expandirCriar .criarElemento {
+  align-items: flex-start;
+  backdrop-filter: blur(10px) saturate(177%);
+  -webkit-backdrop-filter: blur(16px) saturate(177%);
+  border: 1px solid rgba(255, 255, 255, 0.125);
+  box-shadow: 0px 4px 18px rgba(0, 0, 0, 0.25);
+}
+
+.expandirCriar .criarElemento .textosCriar {
+  color: var(--texto);
+  flex-direction: column;
+  display: flex;
+  justify-content: space-around;
+  gap: 15px;
+  width: 250px;
+  margin-left: 25px;
+  margin-top: 15px;
+  user-select: none;
+  transition: 1s;
+}
+.iconeCriar {
+  display: initial;
+  width: 30px;
+  transition: 0.3s;
+}
+
+.criarElemento #selectElement{
+  width: 150px;
+  height: 25px;
+  background: #d9d9d9;
+  border-radius: 15px;
+  text-align: center;
+}
+.criarElemento #selectAtribute{
+  width: 60px;
+  height: 25px;
+  background: #d9d9d9;
+  border-radius: 15px;
+  text-align: center;
+}
+.criarElemento h1 {
+  font-size: 1.5rem;
+}
+.flexrow {
+  display: flex;
+  flex-direction: row;
+}
+input:nth-child(2) {
+  text-align: center;
+  background: #d9d9d9;
+  border-radius: 15px;
+  width: 75px;
+  height: 25px;
+}
+
+input:nth-child(3) {
+  text-align: center;
+  background: #d9d9d9;
+  border-radius: 15px;
+  width: 150px;
+  height: 25px;
+}
+.textosCriar div{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap:15px;
+}
+.textosCriar div div:nth-child(1){
+  display: flex;
+  flex-direction: column;
+  gap:10px;
+}
+
+#btnCriar {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  font-size: 1rem;
+  align-items: center;
+  background: var(--botao);
+  box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+  margin-top: 1%;
+  transition: 0.2s;
+  color: white;
+  font-weight: 500;
+  border-style: none;
+  align-items: center;
+  font-size: 1.3rem;
+  cursor: pointer;
+}
+#btnCriar:hover {
+  transform: scale(110%);
+}
+#btnCriar img{
+  width: 30px;
+}
+.textosCriar {
+  display: none;
 }
 .instrucoes:hover {
   width: 65px;
@@ -181,9 +336,25 @@ textarea {
   margin-left: 25px;
   margin-top: 15px;
   user-select: none;
-  transition: 6s;
+  transition: 1s;
 }
-
+.voltar {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 15px;
+  left: 25px;
+  width: 25px;
+  height: 25px;
+  background: var(--botao);
+  border-radius: 50%;
+  transition: 1s;
+  cursor: pointer;
+}
+.voltar img {
+  width: 15px;
+}
 
 ul {
   display: flex;
@@ -191,7 +362,6 @@ ul {
   justify-content: space-between;
   gap: 15px;
 }
-
 
 .icone {
   display: initial;
@@ -201,4 +371,30 @@ ul {
 
 .textos {
   display: none;
+}
+
+.btnLimpaHTML {
+  position: absolute;
+  left: 35px;
+  top: 55px;
+  width: 900px;
+  align-items: center;
+  
+}
+
+.btnLimpaHTML img {
+  transform: rotate(45deg);
+}
+
+.btnLimpaJS {
+  position: absolute;
+  right: 35px;
+  top: 55px;
+  width: 900px;
+  align-items: center;
+  
+}
+
+.btnLimpaJS img {
+  transform: rotate(45deg);
 }

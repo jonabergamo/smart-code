@@ -5,12 +5,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Exercício JS</title>
     <link rel="stylesheet" href="./css/criar.css" />
-    <link rel="shortcut icon" href="./src/img/favicon.svg" type="image/svg">
+    <link rel="shortcut icon" href="./src/img/favicon.svg" type="image/svg" />
   </head>
   <body>
+    <div class="criarElemento">
+      <div class="textosCriar">
+        <h1>Adicionar Elemento</h1>
+        <div>
+          <div>
+            <select id="selectElement">
+              <option value="button" selected>button</option>
+              <option value="input">input</option>
+              <option value="div">div</option>
+              <option value="span">span</option>
+              <option value="h1">h1</option>
+              <option value="p">p</option>
+            </select>
+            <div class="flexrow">
+              <select id="selectAtribute">
+                <option value="id" selected>ID</option>
+                <option value="class">Class</option>
+              </select>
+              <input
+                type="text"
+                placeholder="Name"
+                id="nomeTipo"
+                class=""
+              />
+            </div>
+            <input
+              type="text"
+              placeholder="Contéudo"
+              id="content"
+              class=""
+            />
+          </div>
+          <button id="btnCriar"><img src="/src/img/mais.svg" alt="" /></button>
+        </div>
+      </div>
+      <img class="iconeCriar" src="./src/img/criarElemento.svg" alt="" />
+    </div>
     <div class="instrucoes">
       <div class="textos">
-          <h1>Instruções</h1>
+        <h1>Instruções</h1>
         <ul>
           <li>Os metadados da head não são necessários;</li>
           <li>divs atuam sempre como flex-direction row;</li>
@@ -18,20 +55,33 @@
           <li>Inputs devem ser inseridos utilizando a tag input</li>
         </ul>
       </div>
-      <img class="icone"src="./src/img/Vector.svg" alt="">
+      <img class="icone" src="./src/img/Vector.svg" alt="" />
     </div>
+
     <main>
       <div class="inputs">
+        <button type="reset" id="btnCriar" class="btnLimpaHTML" onclick="resetHTML()"><img src="./src/img/mais.svg" alt=""></button>
         <div id="HTML_input">
           <label for="">HTML</label>
-          <textarea spellcheck = "false" id="html_enter" cols="30" rows="10"></textarea>
+          <textarea
+            spellcheck="false"
+            id="html_enter"
+            cols="30"
+            rows="10"
+          ></textarea>
+          <button type="reset" id="btnCriar" class="btnLimpaJS" onclick="resetJS()"><img src="./src/img/mais.svg" alt=""></button>
         </div>
         <div id="JS_input">
           <label for="">JS</label>
-          <textarea  spellcheck = "false" id="js_enter" cols="30" rows="10"></textarea>
+          <textarea
+            spellcheck="false"
+            id="js_enter"
+            cols="30"
+            rows="10"
+          ></textarea>
         </div>
       </div>
-      <button type="submit" id="btnSubmit" onclick="criarHTML()">Run</button>
+        <button type="submit" id="btnSubmit" onclick="criarHTML()">Run</button>
     </main>
   </body>
   <script src="./src/criar.js"></script>
