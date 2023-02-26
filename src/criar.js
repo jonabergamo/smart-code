@@ -33,7 +33,7 @@ function criarHTML() {
 
   localStorage.setItem("dados", JSON.stringify(dados));
   setTimeout(function () {
-    window.location.href = "/index.html";
+    window.location.href = "/page02.html";
   }, 500);
 }
 

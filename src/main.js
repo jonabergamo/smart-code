@@ -18,5 +18,5 @@ eval(dados.js)
 var btnVoltar = document.querySelector(".voltar");
 
 function voltar() {
-  window.location.href = "/criar.html";
+  window.location.href = "/index.html";
 }
