@@ -453,9 +453,9 @@ ul {
 }
 
 .card {
-  transform: translate(50px, -275px);
+  transform: translate(50px, -50px);
   width: 10px;
-  height: 254px;
+  height: 300px;
   border-radius: 20px;
   padding: 5px;
   box-shadow: rgba(252, 65, 211, 0.2) 0 15px 30px -5px;
@@ -465,22 +465,22 @@ ul {
 .card__content button:nth-child(1) {
   transform: scale(0%);
   position: fixed;
-  bottom: 15px;
-  left: 15px;
+  bottom: 23px;
+  left: 25px;
   opacity: 0;
 }
 .card__content button:nth-child(2) {
   transform: scale(0%);
   position: fixed;
-  bottom: 15px;
+  bottom: 23px;
   opacity: 0;
 }
 
 .card__content label {
   transform: scale(0%);
   position: fixed;
-  bottom: 15px;
-  right: 15px;
+  bottom: 23px;
+  right: 25px;
   opacity: 0;
 }
 .card__content h2 {
@@ -502,7 +502,7 @@ ul {
 
 .card:hover {
   box-shadow: rgba(252, 65, 211, 0.527) 0 15px 30px -5px;
-  width: 190px;
+  width: 300px;
 }
 
 .card:hover button {
@@ -520,8 +520,9 @@ ul {
 
 .card #ulContainer {
   margin-top: 5px;
-  height: 140px;
-  width: 160px;
+  height: 60%;
+  width: 280px;
+  border-radius: 15px;
   transform: scale(0%);
   opacity: 0;
   overflow-y: scroll;
@@ -539,14 +540,18 @@ ul {
   
 }
 
-#ulContainer ul {
+#ulContainer div {
+  width: 98%;
+  min-height: 45px;
+  display: flex;
+  align-items: center;
   background-image: var(--botao);
   border-radius: 15px;
-  padding: 8px;
+  padding: 5px;
   cursor: pointer;
 }
-#ulContainer ul:hover {
-  transform: scale(110%);
+#ulContainer div:hover {
+  transform: scale(105%);
 }
 
 #ulContainer::-webkit-scrollbar {

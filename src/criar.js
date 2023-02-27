@@ -11,7 +11,10 @@ var horas = data.getHours();
 for (let i = 0; i != saves.length; i++) {
   let ulContainer = document.querySelector("#ulContainer");
 
-  ulContainer.innerHTML += `<ul id="save_${i}" >` + saves[i].name + "</ul>";
+  ulContainer.innerHTML +=
+    `<div id="${i}" title="Última alteração: ${saves[i].createdAt}">` +
+    saves[i].name +
+    "</div>";
 }
 
 window.addEventListener("load", function () {
@@ -147,9 +150,9 @@ cardTela.addEventListener("click", function (e) {
 });
 
 var numID = 0;
-for (let i = 0; i < saves.length; i++){
-  if ((saves[i].id + 1) > numID) {
-    numID = saves[i].id + 1
+for (let i = 0; i < saves.length; i++) {
+  if (saves[i].id + 1 > numID) {
+    numID = saves[i].id + 1;
   }
 }
 
@@ -160,12 +163,16 @@ function confirmaSave() {
   let texto_js = document.querySelector("#js_enter").value;
   let ulContainer = document.querySelector("#ulContainer");
   let saveName = document.querySelector("#saveName").value;
+  let dia = data.toLocaleDateString()
+  let horario = data.toLocaleTimeString()
+  createdAt = dia + " " + horario
 
   if (saves.find((c) => c.name == saveName)) {
     let id = saves.find((c) => c.name == saveName).id;
     saves[id].html = document.querySelector("#html_enter").value;
     saves[id].js = document.querySelector("#js_enter").value;
-
+    saves[id].createdAt = createdAt;
+    
     let dados = {
       html: texto_html,
       js: texto_js,
@@ -173,7 +180,7 @@ function confirmaSave() {
 
     localStorage.setItem("dados", JSON.stringify(dados));
     localStorage.setItem("saves", JSON.stringify(saves));
-    
+    location.reload();
   } else {
 
     let save = {
@@ -181,24 +188,29 @@ function confirmaSave() {
       name: saveName,
       html: texto_html,
       js: texto_js,
+      createdAt: createdAt,
     };
-    
+
     let dados = {
       html: texto_html,
       js: texto_js,
     };
 
     localStorage.setItem("dados", JSON.stringify(dados));
-    
+
     saves.push(save);
-    ulContainer.innerHTML += `<ul id="save_${numID}">` + saveName + "</ul>";
+    ulContainer.innerHTML +=
+      `<ul id="save_${numID}" title="Última alteração: ${createdAt}">` +
+      saveName +
+      "</ul>";
     localStorage.setItem("saves", JSON.stringify(saves));
-    location.reload()
+    location.reload();
   }
 }
 
 ulContainer.addEventListener("click", function (e) {
-  let id = Number(e.target.id.slice(-1));
+  let id = e.target.id;
+  console.log(id)
   document.querySelector("#html_enter").value = saves[id].html;
   document.querySelector("#js_enter").value = saves[id].js;
 });
@@ -206,9 +218,9 @@ ulContainer.addEventListener("click", function (e) {
 var btnDownload = document.querySelector("#btnDownload");
 btnDownload.addEventListener("click", function () {
   let blob = new Blob([JSON.stringify(saves)], {
-    type: "text/plain;charset=utf-8",
+    type: "application/json;charset=utf-8",
   });
-  saveAs(blob, "save.json");
+  saveAs(blob, `smartCodeSave`);
 });
 
 const inputFile = document.querySelector("#inputFile");
@@ -223,7 +235,8 @@ inputFile.addEventListener("change", function () {
     for (let i = 0; i != saves.length; i++) {
       let ulContainer = document.querySelector("#ulContainer");
 
-      ulContainer.innerHTML += `<ul id="save_${i}" >` + saves[i].name + "</ul>";
+      ulContainer.innerHTML +=
+        `<div id="${i}" >` + saves[i].name + "</div>";
     }
     localStorage.setItem("saves", JSON.stringify(saves));
     console.log(saves);
