@@ -2,6 +2,7 @@ var dados = JSON.parse(localStorage.getItem("dados") || "[]");
 var saves = JSON.parse(localStorage.getItem("saves") || "[]");
 document.querySelector("#html_enter").innerHTML = dados.html || "";
 document.querySelector("#js_enter").innerHTML = dados.js || "";
+document.querySelector("#projectTitle").value = dados.name || "";
 const html = document.querySelector("html");
 const body = document.querySelector("body");
 const main = document.querySelector("main");
@@ -10,7 +11,7 @@ var horas = data.getHours();
 
 for (let i = 0; i != saves.length; i++) {
   let ulContainer = document.querySelector("#ulContainer");
-
+  
   ulContainer.innerHTML +=
     `<div id="${i}" title="Última alteração: ${saves[i].createdAt}">` +
     saves[i].name +
@@ -28,10 +29,12 @@ function criarHTML() {
   document.querySelector("body").style.cursor = "wait";
   let inputJS = document.querySelector("#js_enter").value;
   let inputHTML = document.querySelector("#html_enter").value;
+  let saveName = document.querySelector("#projectTitle").value;
 
   let dados = {
     html: inputHTML,
     js: inputJS,
+    name: saveName,
   };
 
   localStorage.setItem("dados", JSON.stringify(dados));
@@ -141,6 +144,8 @@ function resetJS() {
 var btnSalvar = document.querySelector("#btnSalvar");
 
 btnSalvar.addEventListener("click", function () {
+  let projectTitle = document.querySelector("#projectTitle");
+  document.querySelector("#saveName").value = projectTitle.value
   setTimeout(function () {
     cardTela.style.display = "flex";
   }, 150);
@@ -164,26 +169,26 @@ function confirmaSave() {
   let texto_js = document.querySelector("#js_enter").value;
   let ulContainer = document.querySelector("#ulContainer");
   let saveName = document.querySelector("#saveName").value;
-  let dia = data.toLocaleDateString()
-  let horario = data.toLocaleTimeString()
-  let createdAt = dia + " " + horario
+  let dia = data.toLocaleDateString();
+  let horario = data.toLocaleTimeString();
+  let createdAt = dia + " " + horario;
 
   if (saves.find((c) => c.name == saveName)) {
     let id = saves.find((c) => c.name == saveName).id;
     saves[id].html = document.querySelector("#html_enter").value;
     saves[id].js = document.querySelector("#js_enter").value;
     saves[id].createdAt = createdAt;
-    
+
     let dados = {
       html: texto_html,
       js: texto_js,
+      name: saveName,
     };
 
     localStorage.setItem("dados", JSON.stringify(dados));
     localStorage.setItem("saves", JSON.stringify(saves));
     location.reload();
   } else {
-
     let save = {
       id: numID++,
       name: saveName,
@@ -195,6 +200,7 @@ function confirmaSave() {
     let dados = {
       html: texto_html,
       js: texto_js,
+      name: saveName,
     };
 
     localStorage.setItem("dados", JSON.stringify(dados));
@@ -211,9 +217,10 @@ function confirmaSave() {
 
 ulContainer.addEventListener("click", function (e) {
   let id = e.target.id;
-  console.log(id)
+  console.log(id);
   document.querySelector("#html_enter").value = saves[id].html;
   document.querySelector("#js_enter").value = saves[id].js;
+  document.querySelector("#projectTitle").value = saves[id].name;
 });
 
 var btnDownload = document.querySelector("#btnDownload");
@@ -233,16 +240,26 @@ inputFile.addEventListener("change", function () {
   leitor.readAsText(inputFile.files[0]);
 
   leitor.onload = function () {
-    console.log(saves)
     saves = JSON.parse(leitor.result);
-    console.log(saves)
     for (let i = 0; i != saves.length; i++) {
       let ulContainer = document.querySelector("#ulContainer");
 
       ulContainer.innerHTML +=
-        `<div id="${i}" title="Última alteração: ${saves[i].createdAt}">` + saves[i].name + "</div>";
+        `<div id="${i}" title="Última alteração: ${saves[i].createdAt}">` +
+        saves[i].name +
+        "</div>";
+      document.querySelector("#html_enter").value = saves[i].html;
+      document.querySelector("#js_enter").value = saves[i].js;
+      document.querySelector("#projectTitle").value = saves[i].name;
     }
     localStorage.setItem("saves", JSON.stringify(saves));
     console.log(saves);
   };
 });
+
+
+
+function alterar() {
+  let projectTitle = document.querySelector("#projectTitle");
+  document.querySelector("#saveName").value = projectTitle.value
+}

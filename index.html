@@ -12,7 +12,7 @@
     <div class="cardTela">
       <div class="card__contentTela">
         <h2>Salvar Projeto</h2>
-        <input type="text" maxlength="29" name="" id="saveName" placeholder="Nome do projeto"/>
+        <input type="text" maxlength="25"  value="Project Undefined" id="saveName" placeholder="Nome do projeto"/>
         <button
           type="submit"
           id="btnConfirmaSave"
@@ -66,6 +66,7 @@
     </div>
 
     <main>
+      <input id="projectTitle" onchange="alterar()" maxlength="25" value="Project Undefined"></input>
       <div class="inputs">
         <div id="HTML_input">
           <label for="">HTML</label>
