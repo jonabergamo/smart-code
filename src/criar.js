@@ -200,7 +200,7 @@ function confirmaSave() {
 
     saves.push(save);
     ulContainer.innerHTML +=
-      `<ul id="save_${numID}" title="Última alteração: ${createdAt}">` +
+      `<ul id="${numID}" title="Última alteração: ${createdAt}">` +
       saveName +
       "</ul>";
     localStorage.setItem("saves", JSON.stringify(saves));
@@ -217,10 +217,11 @@ ulContainer.addEventListener("click", function (e) {
 
 var btnDownload = document.querySelector("#btnDownload");
 btnDownload.addEventListener("click", function () {
+  let dia = data.toLocaleDateString();
   let blob = new Blob([JSON.stringify(saves)], {
     type: "application/json;charset=utf-8",
   });
-  saveAs(blob, `smartCodeSave`);
+  saveAs(blob, `smartCodeSave ${dia}`);
 });
 
 const inputFile = document.querySelector("#inputFile");
@@ -236,7 +237,7 @@ inputFile.addEventListener("change", function () {
       let ulContainer = document.querySelector("#ulContainer");
 
       ulContainer.innerHTML +=
-        `<div id="${i}" >` + saves[i].name + "</div>";
+        `<div id="${i}" title="Última alteração: ${createdAt}">` + saves[i].name + "</div>";
     }
     localStorage.setItem("saves", JSON.stringify(saves));
     console.log(saves);

@@ -48,7 +48,7 @@ body {
   color: var(--texto);
 }
 body::-webkit-scrollbar {
-  width: 12px;               /* width of the entire scrollbar */
+  width: 12px; /* width of the entire scrollbar */
 }
 main {
   display: flex;
@@ -74,7 +74,7 @@ input {
   width: 700px;
   height: 200px;
 }
- h1 {
+h1 {
   width: 600px;
   text-align: center;
   font-size: 28px;
@@ -111,12 +111,12 @@ div {
   margin-top: 2%;
   gap: 30px;
 }
-input p{
+input p {
   padding-top: 10px;
   font-weight: 700;
 }
 
-span{
+span {
   margin-top: 20px;
   padding: 10px;
   background-color: var(--input-fundo);
@@ -135,6 +135,7 @@ span{
 }
 
 button {
+  margin-bottom: 30px;
   border-style: none;
   width: 140px;
   height: 60px;
@@ -165,7 +166,7 @@ button:hover {
   height: 50px;
   background: var(--botao);
   border-radius: 50%;
-  transition: .3s;
+  transition: 0.3s;
   cursor: pointer;
 }
 
@@ -175,4 +176,29 @@ button:hover {
 
 .voltar:hover {
   transform: scale(110%);
+}
+
+ul {
+  padding: 25px;
+  color: black;
+  background-color: white;
+  border-radius: 12px;
+}
+
+ul ul {
+  font-weight: 500;
+  padding: 0px;
+  color: black;
+  background-color: white;
+  border-radius: 12px;
+}
+
+b {
+  background-color: #f3ec78;
+  background-image: var(--botao);
+  background-size: 100%;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
 }
