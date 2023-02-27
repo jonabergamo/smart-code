@@ -125,6 +125,7 @@ textarea {
   display: flex;
   justify-content: flex-start;
   border-style: none;
+  resize: none;
 }
 
 #btnSubmit {
@@ -285,7 +286,9 @@ input:nth-child(3) {
 
 #btnCriar,
 #btnCopiar,
-#btnSalvar {
+#btnSalvar,
+#btnDownload,
+#btnUpload {
   width: 40px;
   min-width: 40px;
   height: 40px;
@@ -308,7 +311,9 @@ input:nth-child(3) {
 }
 #btnCriar:hover,
 #btnCopiar:hover,
-#btnSalvar:hover {
+#btnSalvar:hover,
+#btnDownload:hover,
+#btnUpload:hover {
   transform: scale(110%);
 }
 
@@ -316,6 +321,10 @@ input:nth-child(3) {
 #btnSalvar img {
   width: 30px;
 }
+#btnUpload img {
+  width: 25px;
+}
+
 
 #btnCopiar img{
   width: 35px;
@@ -323,6 +332,10 @@ input:nth-child(3) {
 #btnCriar img {
   filter: contrast(100);
   width: 35px;
+}
+#btnDownload img {
+  filter: contrast(100);
+  width: 25px;
 }
 
 .textosCriar {
@@ -449,11 +462,25 @@ ul {
   background-image: var(--botao);
   transition: 0.3s;
 }
-
-.card__content button {
+.card__content button:nth-child(1) {
   transform: scale(0%);
   position: fixed;
   bottom: 15px;
+  left: 15px;
+  opacity: 0;
+}
+.card__content button:nth-child(2) {
+  transform: scale(0%);
+  position: fixed;
+  bottom: 15px;
+  opacity: 0;
+}
+
+.card__content label {
+  transform: scale(0%);
+  position: fixed;
+  bottom: 15px;
+  right: 15px;
   opacity: 0;
 }
 .card__content h2 {
@@ -479,6 +506,10 @@ ul {
 }
 
 .card:hover button {
+  transform: scale(100%);
+  opacity: 1;
+}
+.card:hover label {
   transform: scale(100%);
   opacity: 1;
 }
@@ -585,4 +616,8 @@ ul {
   height: 50px;
   width: 250px;
   font-size: 1.5rem;
+}
+
+#btnUpload input{
+  display: none;
 }

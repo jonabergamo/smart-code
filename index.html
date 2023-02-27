@@ -10,8 +10,8 @@
   <body>
     <div class="cardTela">
       <div class="card__contentTela">
-        <h2>Salvar</h2>
-        <input type="text" name="" id="saveName" placeholder="Nome"/>
+        <h2>Salvar Projeto</h2>
+        <input type="text" name="" id="saveName" placeholder="Nome do projeto"/>
         <button
           type="submit"
           id="btnConfirmaSave"
@@ -68,6 +68,7 @@
         <div id="HTML_input">
           <label for="">HTML</label>
           <textarea
+          placeholder="Digite aqui seu código HTML"
             spellcheck="false"
             id="html_enter"
             cols="30"
@@ -77,6 +78,7 @@
         <div id="JS_input">
           <label for="">JS</label>
           <textarea
+          placeholder="Digite aqui seu código JavaScript"
             spellcheck="false"
             id="js_enter"
             cols="30"
@@ -88,12 +90,15 @@
     </main>
     <div class="card">
       <div class="card__content">
-        <button id="btnSalvar"><img src="/src/img/save.svg" alt="" /></button>
+        <button id="btnSalvar" title="Salvar Projeto"><img src="/src/img/save.svg" alt="" /></button>
+        <button id="btnDownload" title="Exportar Saves"><img src="/src/img/download.svg" alt="" /></button>
+        <label id="btnUpload" title="Importar Saves"><input id="inputFile" type="file"><img src="/src/img/upload.svg" alt="" /></input></label>
         <h2>Salvos</h2>
         <ul id="ulContainer">
         </ul>
       </div>
     </div>
   </body>
+  <script type="text/javascript" src="./src/FileSaver.js"></script>
   <script src="./src/criar.js"></script>
 </html>

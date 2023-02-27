@@ -147,6 +147,11 @@ cardTela.addEventListener("click", function (e) {
 });
 
 var numID = 0;
+for (let i = 0; i < saves.length; i++){
+  if ((saves[i].id + 1) > numID) {
+    numID = saves[i].id + 1
+  }
+}
 
 function confirmaSave() {
   cardTela.style.display = "none";
@@ -160,21 +165,35 @@ function confirmaSave() {
     let id = saves.find((c) => c.name == saveName).id;
     saves[id].html = document.querySelector("#html_enter").value;
     saves[id].js = document.querySelector("#js_enter").value;
-    criarHTML();
+
+    let dados = {
+      html: texto_html,
+      js: texto_js,
+    };
+
+    localStorage.setItem("dados", JSON.stringify(dados));
+    localStorage.setItem("saves", JSON.stringify(saves));
+    
   } else {
+
     let save = {
-      id: numID,
+      id: numID++,
       name: saveName,
       html: texto_html,
       js: texto_js,
     };
-    numID++;
+    
+    let dados = {
+      html: texto_html,
+      js: texto_js,
+    };
+
+    localStorage.setItem("dados", JSON.stringify(dados));
+    
     saves.push(save);
-
     ulContainer.innerHTML += `<ul id="save_${numID}">` + saveName + "</ul>";
-
     localStorage.setItem("saves", JSON.stringify(saves));
-    location.reload();
+    location.reload()
   }
 }
 
@@ -182,4 +201,31 @@ ulContainer.addEventListener("click", function (e) {
   let id = Number(e.target.id.slice(-1));
   document.querySelector("#html_enter").value = saves[id].html;
   document.querySelector("#js_enter").value = saves[id].js;
+});
+
+var btnDownload = document.querySelector("#btnDownload");
+btnDownload.addEventListener("click", function () {
+  let blob = new Blob([JSON.stringify(saves)], {
+    type: "text/plain;charset=utf-8",
+  });
+  saveAs(blob, "save.json");
+});
+
+const inputFile = document.querySelector("#inputFile");
+
+inputFile.addEventListener("change", function () {
+  let leitor = new FileReader();
+
+  leitor.readAsText(inputFile.files[0]);
+
+  leitor.onload = function () {
+    saves = JSON.parse(leitor.result);
+    for (let i = 0; i != saves.length; i++) {
+      let ulContainer = document.querySelector("#ulContainer");
+
+      ulContainer.innerHTML += `<ul id="save_${i}" >` + saves[i].name + "</ul>";
+    }
+    localStorage.setItem("saves", JSON.stringify(saves));
+    console.log(saves);
+  };
 });
