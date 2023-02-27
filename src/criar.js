@@ -48,6 +48,7 @@ var iconeCriar = document.querySelector(".iconeCriar");
 var textosCriar = document.querySelector(".textosCriar");
 var expandir = document.querySelector(".expandir");
 var cardTela = document.querySelector(".cardTela");
+var smartCodeLogo = document.querySelector("#smartCodeLogo");
 
 abaInfo.addEventListener("click", function (e) {
   e.stopPropagation();

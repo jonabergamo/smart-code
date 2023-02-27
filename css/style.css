@@ -108,6 +108,8 @@ div {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
+  
   margin-top: 2%;
   gap: 30px;
 }
@@ -201,4 +203,42 @@ b {
   -moz-background-clip: text;
   -webkit-text-fill-color: transparent;
   -moz-text-fill-color: transparent;
+}
+
+#smartCodeLogo {
+  position: absolute;
+  transform: rotate(90deg);
+  right: -240px;
+  top:200px;
+  user-select: none;
+}
+
+#smartCodeLogo h1 {
+  font-size:4rem;
+  background-color: #000000;
+  background-image: var(--botao);
+  background-size: 100%;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent; 
+  -moz-text-fill-color: transparent;
+}
+#criador {
+  user-select: none;
+  opacity: 0;
+  font-size: 1rem;
+  position: absolute;
+  bottom: 15px;
+  right: 20px;
+  transition: 1s;
+}
+#criador:hover {
+ opacity: 1;
+}
+
+@media (max-width:954px){
+  #smartCodeLogo{
+    display: none;
+  }
+
 }
