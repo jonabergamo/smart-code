@@ -73,6 +73,12 @@ input {
   align-items: center;
   width: 700px;
   height: 200px;
+  border-radius: 4px;
+  background: var(--input-fundo);
+  border-radius: 12px;
+  width: 100px;
+  height: 40px;
+
 }
 h1 {
   width: 600px;
@@ -97,13 +103,6 @@ p {
 .inputOutput {
   display: flex;
   flex-direction: column;
-}
-input {
-  background: var(--input-fundo);
-  border-radius: 12px;
-  width: 100px;
-  height: 40px;
-  border-style: none;
 }
 div {
   display: flex;
