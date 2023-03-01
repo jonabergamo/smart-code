@@ -2,7 +2,8 @@ var dados = JSON.parse(localStorage.getItem("dados") || "[]");
 var saves = JSON.parse(localStorage.getItem("saves") || "[]");
 document.querySelector("#html_enter").innerHTML = dados.html || "";
 document.querySelector("#js_enter").innerHTML = dados.js || "";
-document.querySelector("#projectTitle").value = dados.name || "Project Undefined";
+document.querySelector("#projectTitle").value =
+  dados.name || "Project Undefined";
 const html = document.querySelector("html");
 const body = document.querySelector("body");
 const main = document.querySelector("main");
@@ -11,7 +12,6 @@ var horas = data.getHours();
 
 for (let i = 0; i != saves.length; i++) {
   let ulContainer = document.querySelector("#ulContainer");
-  
   ulContainer.innerHTML +=
     `<div id="${i}" title="Última alteração: ${saves[i].createdAt}">` +
     saves[i].name +
@@ -80,6 +80,9 @@ body.addEventListener("click", function (e) {
   if (cardTela.style.display == "flex") {
     cardTela.style.display = "none";
   }
+  if (cardEditar.style.display == "flex") {
+    cardEditar.style.display = "none";
+  }
 });
 
 criarInfo.addEventListener("click", function (e) {
@@ -145,7 +148,7 @@ var btnSalvar = document.querySelector("#btnSalvar");
 
 btnSalvar.addEventListener("click", function () {
   let projectTitle = document.querySelector("#projectTitle");
-  document.querySelector("#saveName").value = projectTitle.value
+  document.querySelector("#saveName").value = projectTitle.value;
   setTimeout(function () {
     cardTela.style.display = "flex";
   }, 150);
@@ -257,9 +260,72 @@ inputFile.addEventListener("change", function () {
   };
 });
 
+const btnEditar = document.querySelector("#btnEditar");
+var cardEditar = document.querySelector(".cardEditar");
 
+btnEditar.addEventListener("click", () => {
+  let projectTitle = document.querySelector("#projectTitle").value;
+  document.querySelector("#newSaveName").value = projectTitle;
+  setTimeout(function () {
+    cardEditar.style.display = "flex";
+  }, 150);
+});
 
-function alterar() {
-  let projectTitle = document.querySelector("#projectTitle");
-  document.querySelector("#saveName").value = projectTitle.value
+cardEditar.addEventListener("click", function (e) {
+  e.stopPropagation();
+});
+
+function confirmaEdit() {
+  let oldName = document.querySelector("#projectTitle").value;
+  let dia = data.toLocaleDateString();
+  let horario = data.toLocaleTimeString();
+  let createdAt = dia + " " + horario;
+
+  console.log(oldName);
+  let saveSelected = saves.find((c) => c.name === oldName).id;
+  console.log(saveSelected);
+  var newSaveName = document.querySelector("#newSaveName").value;
+  console.log(newSaveName);
+  saves[saveSelected].name = newSaveName;
+  saves[saveSelected].createdAt = createdAt;
+  console.log(saves[saveSelected]);
+  localStorage.setItem("saves", JSON.stringify(saves));
+  cardEditar.style.display = "none";
+  dados.html = saves[saveSelected].html;
+  dados.js = saves[saveSelected].js;
+  dados.name = newSaveName;
+  localStorage.setItem("dados", JSON.stringify(dados));
+  location.reload();
+}
+
+var newSaves = [];
+var newId = 0;
+
+function delSave() {
+  let titulo = document.querySelector("#projectTitle").value;
+
+  console.log(saves.find((c) => c.name == titulo).name === titulo);
+  if (saves.find((c) => c.name == titulo).name === titulo) {
+    let idDel = saves.find((c) => c.name === titulo).id;
+    console.log(idDel);
+    for (i = 0; i < saves.length; i++) {
+      if (i != idDel) {
+        var newSave = {
+          id: newId,
+          name: saves[i].name,
+          html: saves[i].html,
+          js: saves[i].js,
+          createdAt: saves[i].createdAt,
+        };
+        newId++;
+        newSaves.push(newSave);
+      }
+    }
+    saves = newSaves;
+    console.log(saves);
+  }
+
+  cardEditar.style.display = "none";
+  localStorage.setItem("saves", JSON.stringify(saves));
+  location.reload();
 }

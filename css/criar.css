@@ -290,7 +290,9 @@ input:nth-child(3) {
 #btnCopiar,
 #btnSalvar,
 #btnDownload,
-#btnUpload {
+#btnUpload,
+#btnEditar,
+#btnDelete {
   width: 40px;
   min-width: 40px;
   height: 40px;
@@ -314,7 +316,9 @@ input:nth-child(3) {
 #btnCopiar:hover,
 #btnSalvar:hover,
 #btnDownload:hover,
-#btnUpload:hover {
+#btnUpload:hover,
+#btnEditar:hover,
+#btnDelete:hover {
   transform: scale(110%);
 }
 
@@ -322,6 +326,9 @@ input:nth-child(3) {
   width: 30px;
 }
 #btnUpload img {
+  width: 25px;
+}
+#btnDelete img {
   width: 25px;
 }
 
@@ -336,7 +343,10 @@ input:nth-child(3) {
   filter: contrast(100);
   width: 25px;
 }
-
+#btnEditar img {
+  filter: contrast(100);
+  width: 25px;
+}
 .textosCriar {
   display: none;
 }
@@ -472,6 +482,14 @@ ul {
   transform: scale(0%);
   position: fixed;
   bottom: 23px;
+  left: 90px;
+  opacity: 0;
+}
+.card__content button:nth-child(3) {
+  transform: scale(0%);
+  position: fixed;
+  bottom: 23px;
+  right: 90px;
   opacity: 0;
 }
 
@@ -566,7 +584,7 @@ ul {
   border-radius: 20px; /* roundness of the scroll thumb */ /* creates padding around scroll thumb */
 }
 
-.cardTela {
+.cardTela, .cardEditar {
   display: none;
   position: absolute;
   z-index: 10000;
@@ -578,7 +596,8 @@ ul {
   background-image: var(--botao);
 }
 
-.card__contentTela {
+
+.card__contentTela, .card__contentEditar {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -588,7 +607,7 @@ ul {
   width: 100%;
   height: 100%;
 }
-.card__contentTela h2 {
+.card__contentTela h2, .card__contentEditar h2 {
   margin-bottom: 20px;
 }
 
@@ -615,10 +634,20 @@ ul {
   transform: scale(110%);
 }
 
-#saveName {
+#saveName  {
   height: 50px;
   width: 250px;
   font-size: 1.5rem;
+}
+
+#newSaveName {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  width: 250px;
+  font-size: 1.5rem;
+  border-radius: 15px;
 }
 
 #btnUpload input {
@@ -691,4 +720,9 @@ ul {
   -webkit-text-fill-color: transparent;
   -moz-text-fill-color: transparent;
   user-select: none;
+}
+
+.card__contentEditar div{
+  display: flex;
+  gap: 20px;
 }

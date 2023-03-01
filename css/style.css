@@ -80,6 +80,20 @@ input {
   height: 40px;
 
 }
+input[type="file"]{
+  padding: 5px;
+  background-image: var(--botao);
+  border-radius: 30px;
+}
+textarea {
+  border-radius: 12px;
+}
+hr{
+  background-image: var(--botao);
+  border-style: none;
+  height: 1px;
+  width: 100%;
+}
 h1 {
   width: 600px;
   text-align: center;
