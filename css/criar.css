@@ -86,7 +86,7 @@ main {
   background-color: var(--fundoTranparencia);
   border-radius: 12px;
   border: 2px solid rgba(117, 117, 117, 0.125);
-  transition: 0.3s;
+  transition: 0.2s;
 }
 .expandirCriar main {
   margin-left: 20%;
@@ -156,7 +156,7 @@ textarea {
   left: 0px;
   background: var(--botao);
   border-radius: 0px 10px 10px 0px;
-  transition: 0.3s;
+  transition: 0.2s;
   cursor: pointer;
 }
 .expandir .instrucoes {
@@ -174,7 +174,7 @@ textarea {
   left: 0px;
   background: var(--botao);
   border-radius: 0px 10px 10px 0px;
-  transition: 0.3s;
+  transition: 0.2s;
   cursor: pointer;
 }
 .expandirCriar .criarElemento {
