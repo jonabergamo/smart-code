@@ -4,41 +4,15 @@ document.querySelector("#html_enter").innerHTML = dados.html || "";
 document.querySelector("#js_enter").innerHTML = dados.js || "";
 document.querySelector("#projectTitle").value =
   dados.name || "Project Undefined";
-document.body.style.setProperty(
-  "--botao",
-  dados.color[0] || "linear-gradient(257.91deg,#9e38e1 17.54%,#e0386b 72.93%)"
-);
-document.body.style.setProperty("--fundo", dados.color[1] || "black");
+if (dados == true) {
+  document.body.style.setProperty("--botao", dados.color[0]);
+  document.body.style.setProperty("--fundo", dados.color[1]);
+}
 const html = document.querySelector("html");
 const body = document.querySelector("body");
 const main = document.querySelector("main");
 var data = new Date();
 var horas = data.getHours();
-
-function alterarCor() {
-  let randomColor1 = ((Math.random() * 0xffffff) << 0)
-    .toString(16)
-    .padStart(6, "0");
-  let randomColor2 = ((Math.random() * 0xffffff) << 0)
-    .toString(16)
-    .padStart(6, "0");
-  console.log(`#${randomColor1}  /  #${randomColor2}`);
-  document.body.style.setProperty(
-    "--botao",
-    `linear-gradient(to right, #${randomColor1}, #${randomColor2})`
-  );
-}
-
-var corFundo = dados.color[1] || "black";
-function alterarCorFundo() {
-  if (corFundo == "black") {
-    document.body.style.setProperty("--fundo", `white`);
-    corFundo = "white";
-  } else if (corFundo == "white") {
-    document.body.style.setProperty("--fundo", `black`);
-    corFundo = "black";
-  }
-}
 
 for (let i = 0; i != saves.length; i++) {
   let ulContainer = document.querySelector("#ulContainer");
@@ -368,4 +342,33 @@ function delSave() {
   cardEditar.style.display = "none";
   localStorage.setItem("saves", JSON.stringify(saves));
   location.reload();
+}
+
+function alterarCor() {
+  let randomColor1 = ((Math.random() * 0xffffff) << 0)
+    .toString(16)
+    .padStart(6, "0");
+  let randomColor2 = ((Math.random() * 0xffffff) << 0)
+    .toString(16)
+    .padStart(6, "0");
+  console.log(`#${randomColor1}  /  #${randomColor2}`);
+  document.body.style.setProperty(
+    "--botao",
+    `linear-gradient(to right, #${randomColor1}, #${randomColor2})`
+  );
+}
+if (dados == true) {
+  var corFundo = dados.color[1];
+} else {
+  var corFundo = "black";
+}
+
+function alterarCorFundo() {
+  if (corFundo == "black") {
+    document.body.style.setProperty("--fundo", `white`);
+    corFundo = "white";
+  } else if (corFundo == "white") {
+    document.body.style.setProperty("--fundo", `black`);
+    corFundo = "black";
+  }
 }
