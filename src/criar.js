@@ -11,9 +11,11 @@ if (isEmpty(dados)) {
     "linear-gradient(257.91deg, #9e38e1 17.54%, #e0386b 72.93%)"
   );
   document.body.style.setProperty("--fundo", "black");
+  var corFundo = "black";
 } else {
   document.body.style.setProperty("--botao", dados.color[0]);
   document.body.style.setProperty("--fundo", dados.color[1]);
+  var corFundo = dados.color[1];
 }
 const html = document.querySelector("html");
 const body = document.querySelector("body");
@@ -368,7 +370,7 @@ function alterarCor() {
   );
 }
 
-var corFundo = dados.color[1] || "black";
+
 
 function alterarCorFundo() {
   if (corFundo == "black") {
