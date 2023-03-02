@@ -13,34 +13,11 @@
 :root {
   --fundo: linear-gradient(241.29deg, #111111 10.31%, #1a1919 93.41%);
   --texto: white;
-  --botao: linear-gradient(
-    257.91deg,
-    #9e38e1 17.54%,
-    #cf58bf 54.55%,
-    #e0386b 72.93%
-  );
+  --botao: linear-gradient(257.91deg, #9e38e1 17.54%, #e0386b 72.93%);
   --botaoTxt: white;
   --input-fundo: white;
   --peso: 300;
-  --fundoTranparencia: rgba(32, 32, 32, 0.406);
-  --cardShadow: rgba(252, 65, 211, 0.527);
-}
-
-.white-mode:root {
-  --fundo: #e0e0e0;
-  --texto: rgb(0, 0, 0);
-  --botao: linear-gradient(
-    260.02deg,
-    #a6c3e4 -4.36%,
-    #3f87dd -4.35%,
-    #7db1ef 45.09%,
-    #86bcfc 59.75%
-  );
-  --botaoTxt: rgb(3, 3, 3);
-  --input-fundo: white;
-  --peso: 500;
-  --fundoTranparencia: rgba(117, 117, 117, 0.185);
-  --cardShadow: rgba(65, 230, 252, 0.527);
+  --fundoTranparencia: rgba(32, 32, 32, 0.92);
 }
 
 body {
@@ -65,16 +42,18 @@ textarea::-webkit-scrollbar-thumb {
   border-radius: 20px; /* roundness of the scroll thumb */ /* creates padding around scroll thumb */
 }
 body::-webkit-scrollbar {
+  background: var(--botao);
   height: 5px; /* width of the entire scrollbar */
+  width: 5px;
 }
 
 body::-webkit-scrollbar-track {
-  background: rgb(198, 198, 198);
+  background: var(--fundo);
   border-radius: 20px; /* color of the tracking area */
 }
 
 body::-webkit-scrollbar-thumb {
-  background-color: rgb(46, 46, 46); /* color of the scroll thumb */
+  background-image: var(--botao); /* color of the scroll thumb */
   border-radius: 20px; /* roundness of the scroll thumb */ /* creates padding around scroll thumb */
 }
 
@@ -175,10 +154,13 @@ textarea {
   height: 60px;
   top: 22vh;
   left: 0px;
-  background: var(--corFundo);
+  background: var(--botao);
   border-radius: 0px 10px 10px 0px;
   transition: 0.3s;
   cursor: pointer;
+}
+.expandir .instrucoes {
+  background: var(--corFundo);
 }
 .criarElemento {
   position: fixed;
@@ -190,10 +172,13 @@ textarea {
   height: 60px;
   top: 10vh;
   left: 0px;
-  background: var(--corFundoCriar);
+  background: var(--botao);
   border-radius: 0px 10px 10px 0px;
   transition: 0.3s;
   cursor: pointer;
+}
+.expandirCriar .criarElemento {
+  background: var(--corFundoCriar);
 }
 .criarElemento:hover {
   width: 65px;
@@ -215,7 +200,7 @@ textarea {
   box-shadow: 0px 4px 18px rgba(0, 0, 0, 0.25);
 }
 
-.expandirCriar .instrucoes{
+.expandirCriar .instrucoes {
   top: 42vh;
 }
 
@@ -512,14 +497,13 @@ ul {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: var(--fundo);
+  background: rgb(20, 20, 20);
   border-radius: 17px;
   width: 100%;
   height: 100%;
 }
 
 .card:hover {
-  box-shadow: var(--cardShadow) 0 15px 30px -5px;
   width: 300px;
 }
 
@@ -539,9 +523,8 @@ ul {
 .card #ulContainer {
   margin-top: 5px;
   height: 60%;
-  width: 280px;
+  width: 0px;
   border-radius: 15px;
-  transform: scale(0%);
   opacity: 0;
   overflow-y: scroll;
   overflow-x: hidden;
@@ -550,6 +533,7 @@ ul {
 }
 
 .card:hover #ulContainer {
+  width: 280px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -576,7 +560,7 @@ ul {
 }
 
 #ulContainer::-webkit-scrollbar-track {
-  background: var(--fundo);
+  background: black;
   border-radius: 20px; /* color of the tracking area */
 }
 
@@ -585,7 +569,8 @@ ul {
   border-radius: 20px; /* roundness of the scroll thumb */ /* creates padding around scroll thumb */
 }
 
-.cardTela, .cardEditar {
+.cardTela,
+.cardEditar {
   display: none;
   position: absolute;
   z-index: 10000;
@@ -597,8 +582,8 @@ ul {
   background-image: var(--botao);
 }
 
-
-.card__contentTela, .card__contentEditar {
+.card__contentTela,
+.card__contentEditar {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -608,7 +593,8 @@ ul {
   width: 100%;
   height: 100%;
 }
-.card__contentTela h2, .card__contentEditar h2 {
+.card__contentTela h2,
+.card__contentEditar h2 {
   margin-bottom: 20px;
 }
 
@@ -635,7 +621,7 @@ ul {
   transform: scale(110%);
 }
 
-#saveName  {
+#saveName {
   height: 50px;
   width: 250px;
   font-size: 1.5rem;
@@ -664,8 +650,6 @@ ul {
   user-select: none;
   transition: 0.3s;
 }
-
-
 
 #smartCodeLogo h1 {
   background-color: #000000;
@@ -723,7 +707,57 @@ ul {
   user-select: none;
 }
 
-.card__contentEditar div{
+.card__contentEditar div {
   display: flex;
   gap: 20px;
+}
+
+.seletorCor {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  width: 35px;
+  height: 35px;
+  border-radius: 20px;
+  padding: 2px;
+  box-shadow: rgba(252, 65, 211, 0.2) 0 15px 30px -5px;
+  background-image: var(--botao);
+  transition: 0.2s;
+}
+.seletorCorFundo {
+  position: absolute;
+  bottom: 10px;
+  left: 55px;
+  width: 35px;
+  height: 35px;
+  border-radius: 20px;
+  padding: 2px;
+  box-shadow: rgba(252, 65, 211, 0.2) 0 15px 30px -5px;
+  background-image: var(--botao);
+  transition: 0.2s;
+}
+.seletorBtnFundo {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: var(--fundo);
+  border-radius: 17px;
+  width: 100%;
+  height: 100%;
+}
+.seletorBtn {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: var(--botao);
+  border-radius: 17px;
+  width: 100%;
+  height: 100%;
+}
+
+.seletorCor:hover,
+.seletorCorFundo:hover {
+  transform: scale(110%);
 }

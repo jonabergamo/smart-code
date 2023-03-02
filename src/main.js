@@ -5,15 +5,14 @@ const main = document.querySelector("main");
 var data = new Date();
 var horas = data.getHours();
 
-window.addEventListener("load", function () {
-  if (6 > horas > 18) {
-    html.classList.toggle("white-mode");
-    body.classList.toggle("white-mode");
-  }
-});
+document.body.style.setProperty(
+  "--botao",
+  dados.color[0] || "linear-gradient(257.91deg,#9e38e1 17.54%,#e0386b 72.93%)"
+);
+document.body.style.setProperty("--fundo", dados.color[1] || "black");
 
 main.innerHTML += dados.html;
-eval(dados.js)
+eval(dados.js);
 
 var btnVoltar = document.querySelector(".voltar");
 

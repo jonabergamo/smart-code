@@ -4,11 +4,41 @@ document.querySelector("#html_enter").innerHTML = dados.html || "";
 document.querySelector("#js_enter").innerHTML = dados.js || "";
 document.querySelector("#projectTitle").value =
   dados.name || "Project Undefined";
+document.body.style.setProperty(
+  "--botao",
+  dados.color[0] || "linear-gradient(257.91deg,#9e38e1 17.54%,#e0386b 72.93%)"
+);
+document.body.style.setProperty("--fundo", dados.color[1] || "black");
 const html = document.querySelector("html");
 const body = document.querySelector("body");
 const main = document.querySelector("main");
 var data = new Date();
 var horas = data.getHours();
+
+function alterarCor() {
+  let randomColor1 = ((Math.random() * 0xffffff) << 0)
+    .toString(16)
+    .padStart(6, "0");
+  let randomColor2 = ((Math.random() * 0xffffff) << 0)
+    .toString(16)
+    .padStart(6, "0");
+  console.log(`#${randomColor1}  /  #${randomColor2}`);
+  document.body.style.setProperty(
+    "--botao",
+    `linear-gradient(to right, #${randomColor1}, #${randomColor2})`
+  );
+}
+
+var corFundo = dados.color[1] || "black";
+function alterarCorFundo() {
+  if (corFundo == "black") {
+    document.body.style.setProperty("--fundo", `white`);
+    corFundo = "white";
+  } else if (corFundo == "white") {
+    document.body.style.setProperty("--fundo", `black`);
+    corFundo = "black";
+  }
+}
 
 for (let i = 0; i != saves.length; i++) {
   let ulContainer = document.querySelector("#ulContainer");
@@ -18,23 +48,19 @@ for (let i = 0; i != saves.length; i++) {
     "</div>";
 }
 
-window.addEventListener("load", function () {
-  if (6 > horas > 18) {
-    html.classList.toggle("white-mode");
-    body.classList.toggle("white-mode");
-  }
-});
-
 function criarHTML() {
   document.querySelector("body").style.cursor = "wait";
   let inputJS = document.querySelector("#js_enter").value;
   let inputHTML = document.querySelector("#html_enter").value;
   let saveName = document.querySelector("#projectTitle").value;
-
+  let corAtual = document.body.style.getPropertyValue("--botao");
+  let corAtualFundo = document.body.style.getPropertyValue("--fundo");
+  console.log(corAtual);
   let dados = {
     html: inputHTML,
     js: inputJS,
     name: saveName,
+    color: [corAtual, corAtualFundo],
   };
 
   localStorage.setItem("dados", JSON.stringify(dados));
@@ -175,6 +201,8 @@ function confirmaSave() {
   let dia = data.toLocaleDateString();
   let horario = data.toLocaleTimeString();
   let createdAt = dia + " " + horario;
+  let corAtual = document.body.style.getPropertyValue("--botao");
+  let corAtualFundo = document.body.style.getPropertyValue("--fundo");
 
   if (saves.find((c) => c.name == saveName)) {
     let id = saves.find((c) => c.name == saveName).id;
@@ -186,6 +214,7 @@ function confirmaSave() {
       html: texto_html,
       js: texto_js,
       name: saveName,
+      color: [corAtual, corAtualFundo],
     };
 
     localStorage.setItem("dados", JSON.stringify(dados));
@@ -198,12 +227,14 @@ function confirmaSave() {
       html: texto_html,
       js: texto_js,
       createdAt: createdAt,
+      color: [corAtual, corAtualFundo],
     };
 
     let dados = {
       html: texto_html,
       js: texto_js,
       name: saveName,
+      color: [corAtual, corAtualFundo],
     };
 
     localStorage.setItem("dados", JSON.stringify(dados));
@@ -224,6 +255,7 @@ ulContainer.addEventListener("click", function (e) {
   document.querySelector("#html_enter").value = saves[id].html;
   document.querySelector("#js_enter").value = saves[id].js;
   document.querySelector("#projectTitle").value = saves[id].name;
+  //document.body.style.setProperty("--botao", `${saves[id].color}`);
 });
 
 var btnDownload = document.querySelector("#btnDownload");
@@ -280,6 +312,8 @@ function confirmaEdit() {
   let dia = data.toLocaleDateString();
   let horario = data.toLocaleTimeString();
   let createdAt = dia + " " + horario;
+  let corAtual = document.body.style.getPropertyValue("--botao");
+  let corAtualFundo = document.body.style.getPropertyValue("--fundo");
 
   console.log(oldName);
   let saveSelected = saves.find((c) => c.name === oldName).id;
@@ -288,12 +322,14 @@ function confirmaEdit() {
   console.log(newSaveName);
   saves[saveSelected].name = newSaveName;
   saves[saveSelected].createdAt = createdAt;
+  saves[saveSelected].color = [corAtual, corAtualFundo];
   console.log(saves[saveSelected]);
   localStorage.setItem("saves", JSON.stringify(saves));
   cardEditar.style.display = "none";
   dados.html = saves[saveSelected].html;
   dados.js = saves[saveSelected].js;
   dados.name = newSaveName;
+  dados.color = [corAtual, corAtualFundo];
   localStorage.setItem("dados", JSON.stringify(dados));
   location.reload();
 }
@@ -316,6 +352,10 @@ function delSave() {
           html: saves[i].html,
           js: saves[i].js,
           createdAt: saves[i].createdAt,
+          color: [
+            "linear-gradient(257.91deg,#9e38e1 17.54%,#e0386b 72.93%)",
+            "black",
+          ],
         };
         newId++;
         newSaves.push(newSave);
