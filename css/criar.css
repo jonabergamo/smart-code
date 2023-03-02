@@ -116,6 +116,7 @@ main {
   margin-left: 550px;
 }
 textarea {
+  font-weight: 500;
   text-align: left;
   font-size: 1rem;
   margin-top: 15px;
