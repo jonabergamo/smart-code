@@ -4,11 +4,17 @@ document.querySelector("#html_enter").innerHTML = dados.html || "";
 document.querySelector("#js_enter").innerHTML = dados.js || "";
 document.querySelector("#projectTitle").value =
   dados.name || "Project Undefined";
-document.body.style.setProperty(
-  "--botao",
-  dados.color[0] || "linear-gradient(257.91deg, #9e38e1 17.54%, #e0386b 72.93%)"
-);
-document.body.style.setProperty("--fundo", dados.color[1] || "black");
+
+if (isEmpty(dados)) {
+  document.body.style.setProperty(
+    "--botao",
+    "linear-gradient(257.91deg, #9e38e1 17.54%, #e0386b 72.93%)"
+  );
+  document.body.style.setProperty("--fundo", "black");
+} else {
+  document.body.style.setProperty("--botao", dados.color[0]);
+  document.body.style.setProperty("--fundo", dados.color[1]);
+}
 const html = document.querySelector("html");
 const body = document.querySelector("body");
 const main = document.querySelector("main");
@@ -362,7 +368,7 @@ function alterarCor() {
   );
 }
 
-var corFundo = dados.color[1] || 'black';
+var corFundo = dados.color[1] || "black";
 
 function alterarCorFundo() {
   if (corFundo == "black") {
@@ -372,4 +378,12 @@ function alterarCorFundo() {
     document.body.style.setProperty("--fundo", `black`);
     corFundo = "black";
   }
+}
+
+function isEmpty(obj) {
+  for (var prop in obj) {
+    if (obj.hasOwnProperty(prop)) return false;
+  }
+
+  return true;
 }
