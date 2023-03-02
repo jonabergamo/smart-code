@@ -4,10 +4,11 @@ document.querySelector("#html_enter").innerHTML = dados.html || "";
 document.querySelector("#js_enter").innerHTML = dados.js || "";
 document.querySelector("#projectTitle").value =
   dados.name || "Project Undefined";
-if (dados == true) {
-  document.body.style.setProperty("--botao", dados.color[0]);
-  document.body.style.setProperty("--fundo", dados.color[1]);
-}
+document.body.style.setProperty(
+  "--botao",
+  dados.color[0] || "linear-gradient(257.91deg, #9e38e1 17.54%, #e0386b 72.93%)"
+);
+document.body.style.setProperty("--fundo", dados.color[1] || "black");
 const html = document.querySelector("html");
 const body = document.querySelector("body");
 const main = document.querySelector("main");
@@ -29,12 +30,15 @@ function criarHTML() {
   let saveName = document.querySelector("#projectTitle").value;
   let corAtual = document.body.style.getPropertyValue("--botao");
   let corAtualFundo = document.body.style.getPropertyValue("--fundo");
-  console.log(corAtual);
+
   let dados = {
     html: inputHTML,
     js: inputJS,
     name: saveName,
-    color: [corAtual, corAtualFundo],
+    color: [
+      corAtual || "linear-gradient(257.91deg, #9e38e1 17.54%, #e0386b 72.93%)",
+      corAtualFundo || "black",
+    ],
   };
 
   localStorage.setItem("dados", JSON.stringify(dados));
@@ -357,11 +361,8 @@ function alterarCor() {
     `linear-gradient(to right, #${randomColor1}, #${randomColor2})`
   );
 }
-if (dados == true) {
-  var corFundo = dados.color[1];
-} else {
-  var corFundo = "black";
-}
+
+var corFundo = dados.color[1] || 'black';
 
 function alterarCorFundo() {
   if (corFundo == "black") {
