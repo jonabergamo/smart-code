@@ -178,8 +178,9 @@ for (let i = 0; i < saves.length; i++) {
 }
 
 function confirmaSave() {
+  let projectTitle = document.querySelector("#projectTitle");
+  document.querySelector("#saveName").value = projectTitle.value;
   cardTela.style.display = "none";
-
   let texto_html = document.querySelector("#html_enter").value;
   let texto_js = document.querySelector("#js_enter").value;
   let ulContainer = document.querySelector("#ulContainer");

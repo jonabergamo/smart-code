@@ -33,7 +33,7 @@ textarea::-webkit-scrollbar {
 }
 
 textarea::-webkit-scrollbar-track {
-  background: var(--fundo);
+  background: rgb(35, 35, 35);;
   border-radius: 20px; /* color of the tracking area */
 }
 
@@ -100,7 +100,8 @@ textarea {
   font-size: 1rem;
   margin-top: 15px;
   padding: 15px;
-  background: var(--input-fundo);
+  background: rgb(35, 35, 35);
+  color: white;
   border-radius: 10px;
   min-height: 60vh;
   width: 100%;
