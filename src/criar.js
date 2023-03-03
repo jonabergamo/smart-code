@@ -166,6 +166,15 @@ btnSalvar.addEventListener("click", function () {
   }, 150);
 });
 
+function autoSave() {
+  let projectTitle = document.querySelector("#projectTitle");
+  document.querySelector("#saveName").value = projectTitle.value;
+  setTimeout(function () {
+    cardTela.style.display = "none";
+  }, 150);
+  confirmaSave();
+}
+
 cardTela.addEventListener("click", function (e) {
   e.stopPropagation();
 });
@@ -178,8 +187,6 @@ for (let i = 0; i < saves.length; i++) {
 }
 
 function confirmaSave() {
-  let projectTitle = document.querySelector("#projectTitle");
-  document.querySelector("#saveName").value = projectTitle.value;
   cardTela.style.display = "none";
   let texto_html = document.querySelector("#html_enter").value;
   let texto_js = document.querySelector("#js_enter").value;
@@ -223,7 +230,7 @@ function confirmaSave() {
       name: saveName,
       color: [corAtual, corAtualFundo],
     };
-
+    save.indexOf(i)
     localStorage.setItem("dados", JSON.stringify(dados));
 
     saves.push(save);
@@ -370,8 +377,6 @@ function alterarCor() {
     `linear-gradient(to right, #${randomColor1}, #${randomColor2})`
   );
 }
-
-
 
 function alterarCorFundo() {
   if (corFundo == "black") {

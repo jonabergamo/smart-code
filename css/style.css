@@ -73,9 +73,9 @@ input {
   align-items: center;
   width: 700px;
   height: 200px;
-  color: #ffff;
+  color: #060606;
   border-radius: 4px;
-  background: var(--input-fundo);
+  background: #ffff;
   border-radius: 12px;
   width: 100px;
   height: 40px;
