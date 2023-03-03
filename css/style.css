@@ -55,10 +55,10 @@ main {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 50px;
+  padding: 35px;
   width: 60vw;;
   min-height: 500px;
-  height: auto;
+  height: 95vh;
   backdrop-filter: blur(16px) saturate(180%);
   -webkit-backdrop-filter: blur(16px) saturate(180%);
   background-color: var(--fundoTranparencia);
@@ -94,6 +94,8 @@ hr{
   border-style: none;
   height: 1px;
   width: 100%;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 h1 {
   width: 600px;

@@ -12,8 +12,8 @@
     <div class="seletorCorFundo"><button class="seletorBtnFundo" onclick="alterarCorFundo()"></button></div>
     <div class="cardTela">
       <div class="card__contentTela">
-        <h2>Salvar Projeto</h2>
-        <input type="text" maxlength="25"  value="Project Undefined" id="saveName" placeholder="Nome do projeto"/>
+        <h2>Novo Projeto</h2>
+        <input type="text" maxlength="25"  value="" id="saveName" placeholder="Nome do projeto"/>
         <button
           type="submit"
           id="btnConfirmaSave"
@@ -47,6 +47,7 @@
               <option value="input">input</option>
               <option value="div">div</option>
               <option value="span">span</option>
+              <option value="hr">hr</option>
               <option value="h1">h1</option>
               <option value="p">p</option>
               <option value="b">b</option>
@@ -109,7 +110,7 @@
     </main>
     <div class="card">
       <div class="card__content">
-        <button id="btnSalvar" title="Salvar Projeto"><img src="/src/img/save.svg" alt="" /></button>
+        <button id="btnSalvar" title="Novo Projeto"><img src="/src/img/mais.svg" alt="" /></button>
         <button id="btnEditar" title="Editar Projeto"><img src="/src/img/edit.svg" alt="" /></button>
         <button id="btnDownload" title="Exportar Saves"><img src="/src/img/download.svg" alt="" /></button>
         <label id="btnUpload" title="Importar Saves"><input id="inputFile" type="file"><img src="/src/img/upload.svg" alt="" /></input></label>

@@ -80,7 +80,7 @@ main {
   padding: 50px;
   width: 60vw;
   min-height: 500px;
-  height: auto;
+  height: 95vh;
   backdrop-filter: blur(16px) saturate(180%);
   -webkit-backdrop-filter: blur(16px) saturate(180%);
   background-color: var(--fundoTranparencia);
@@ -308,6 +308,7 @@ input:nth-child(3) {
 }
 
 #btnSalvar img {
+  filter: contrast(100);
   width: 30px;
 }
 #btnUpload img {
@@ -631,6 +632,7 @@ ul {
 #newSaveName {
   display: flex;
   align-items: center;
+  text-align: center;
   justify-content: center;
   height: 50px;
   width: 250px;
@@ -715,6 +717,7 @@ ul {
 
 .seletorCor {
   position: absolute;
+  z-index: 1000;
   bottom: 10px;
   left: 10px;
   width: 35px;
@@ -726,6 +729,7 @@ ul {
   transition: 0.2s;
 }
 .seletorCorFundo {
+  z-index: 1000;
   position: absolute;
   bottom: 10px;
   left: 55px;
