@@ -50,9 +50,8 @@ function criarHTML() {
   };
 
   localStorage.setItem("dados", JSON.stringify(dados));
-  setTimeout(function () {
-    window.location.href = "/page02.html";
-  }, 500);
+
+  window.location.href = "/page02.html";
 }
 
 var abaInfo = document.querySelector(".instrucoes");
@@ -213,7 +212,6 @@ function confirmaSave() {
 
     localStorage.setItem("dados", JSON.stringify(dados));
     localStorage.setItem("saves", JSON.stringify(saves));
-    location.reload();
   } else {
     let save = {
       id: numID++,
@@ -230,7 +228,6 @@ function confirmaSave() {
       name: saveName,
       color: [corAtual, corAtualFundo],
     };
-    save.indexOf(i)
     localStorage.setItem("dados", JSON.stringify(dados));
 
     saves.push(save);
