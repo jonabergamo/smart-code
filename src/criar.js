@@ -1,10 +1,36 @@
 var dados = JSON.parse(localStorage.getItem("dados") || "[]");
 var saves = JSON.parse(localStorage.getItem("saves") || "[]");
-document.querySelector("#html_enter").innerHTML = dados.html || "";
-document.querySelector("#js_enter").innerHTML = dados.js || "";
 document.querySelector("#projectTitle").value =
   dados.name || "Project Undefined";
-document.title = "Smart Code - " + document.querySelector("#projectTitle").value;
+document.title =
+  "Smart Code - " + document.querySelector("#projectTitle").value;
+
+var editorHTML = CodeMirror.fromTextArea(
+  document.getElementById("html_enter"),
+  {
+    mode: "xml",
+    theme: "dracula",
+    scrollbarStyle: "null",
+    autoCloseTags: true,
+    lineNumbers: true,
+    extraKeys: {
+      Enter: autoSaveHTML,
+    },
+  }
+);
+editorHTML.setSize("500", "300");
+var editorJS = CodeMirror.fromTextArea(document.getElementById("js_enter"), {
+  mode: "javascript",
+  theme: "dracula",
+  scrollbarStyle: "null",
+  autoCloseTags: true,
+  extraKeys: {
+    Enter: autoSaveJS,
+  },
+});
+editorJS.setSize("500", "300");
+editorHTML.getDoc().setValue(dados.html || "");
+editorJS.getDoc().setValue(dados.js || "");
 
 if (isEmpty(dados)) {
   document.body.style.setProperty(
@@ -34,8 +60,8 @@ for (let i = 0; i != saves.length; i++) {
 
 function criarHTML() {
   document.querySelector("body").style.cursor = "wait";
-  let inputJS = document.querySelector("#js_enter").value;
-  let inputHTML = document.querySelector("#html_enter").value;
+  let inputJS = editorJS.getValue();
+  let inputHTML = editorHTML.getValue();
   let saveName = document.querySelector("#projectTitle").value;
   let corAtual = document.body.style.getPropertyValue("--botao");
   let corAtualFundo = document.body.style.getPropertyValue("--fundo");
@@ -137,24 +163,22 @@ btnCriar.addEventListener("click", function () {
   let nomeTipo = document.querySelector("#nomeTipo").value;
   let conteudo = document.querySelector("#content").value;
 
-  if (document.querySelector("#html_enter").value == "") {
-    document.querySelector("#html_enter").value +=
-      `<${Elemento} ${type}="${nomeTipo}">` + `${conteudo}` + `</${Elemento}>`;
+  if (editorHTML.getValue() == "") {
+    editorHTML
+      .getDoc()
+      .setValue(
+        `<${Elemento} ${type}="${nomeTipo}">` + `${conteudo}` + `</${Elemento}>`
+      );
   } else {
-    document.querySelector("#html_enter").value +=
+    let valorAtual = editorHTML.getValue();
+    let novoValor =
+      valorAtual +
       `\n<${Elemento} ${type}="${nomeTipo}">` +
       `${conteudo}` +
       `</${Elemento}>`;
+    editorHTML.getDoc().setValue(novoValor);
   }
 });
-
-function resetHTML() {
-  document.querySelector("#html_enter").value = "";
-}
-
-function resetJS() {
-  document.querySelector("#js_enter").value = "";
-}
 
 var btnSalvar = document.querySelector("#btnSalvar");
 
@@ -166,13 +190,23 @@ btnSalvar.addEventListener("click", function () {
   }, 150);
 });
 
-function autoSave() {
+function autoSaveHTML() {
   let projectTitle = document.querySelector("#projectTitle");
   document.querySelector("#saveName").value = projectTitle.value;
   setTimeout(function () {
     cardTela.style.display = "none";
   }, 150);
   confirmaSave();
+  editorHTML.replaceSelection("\n", "end");
+}
+function autoSaveJS() {
+  let projectTitle = document.querySelector("#projectTitle");
+  document.querySelector("#saveName").value = projectTitle.value;
+  setTimeout(function () {
+    cardTela.style.display = "none";
+  }, 150);
+  confirmaSave();
+  editorJS.replaceSelection("\n", "end");
 }
 
 cardTela.addEventListener("click", function (e) {
@@ -188,8 +222,8 @@ for (let i = 0; i < saves.length; i++) {
 
 function confirmaSave() {
   cardTela.style.display = "none";
-  let texto_html = document.querySelector("#html_enter").value;
-  let texto_js = document.querySelector("#js_enter").value;
+  let texto_html = editorHTML.getValue();
+  let texto_js = editorJS.getValue();
   let ulContainer = document.querySelector("#ulContainer");
   let saveName = document.querySelector("#saveName").value;
   let dia = data.toLocaleDateString();
@@ -200,8 +234,8 @@ function confirmaSave() {
 
   if (saves.find((c) => c.name == saveName)) {
     let id = saves.find((c) => c.name == saveName).id;
-    saves[id].html = document.querySelector("#html_enter").value;
-    saves[id].js = document.querySelector("#js_enter").value;
+    saves[id].html = editorHTML.getValue();
+    saves[id].js = editorJS.getValue();
     saves[id].createdAt = createdAt;
 
     let dados = {
@@ -244,8 +278,8 @@ function confirmaSave() {
 ulContainer.addEventListener("click", function (e) {
   let id = e.target.id;
   console.log(id);
-  document.querySelector("#html_enter").value = saves[id].html;
-  document.querySelector("#js_enter").value = saves[id].js;
+  editorHTML.getDoc().setValue(saves[id].html);
+  editorJS.getDoc().setValue(saves[id].js);
   document.querySelector("#projectTitle").value = saves[id].name;
   document.title = "Smart Code - " + saves[id].name;
   //document.body.style.setProperty("--botao", `${saves[id].color}`);
@@ -276,8 +310,8 @@ inputFile.addEventListener("change", function () {
         `<div id="${i}" title="Última alteração: ${saves[i].createdAt}">` +
         saves[i].name +
         "</div>";
-      document.querySelector("#html_enter").value = saves[i].html;
-      document.querySelector("#js_enter").value = saves[i].js;
+      editorHTML.getDoc().setValue(saves[i].html);
+      editorJS.getDoc().setValue(saves[i].js);
       document.querySelector("#projectTitle").value = saves[i].name;
     }
     localStorage.setItem("saves", JSON.stringify(saves));

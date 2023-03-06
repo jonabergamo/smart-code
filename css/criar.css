@@ -26,6 +26,7 @@ body {
   align-items: center;
   background: var(--fundo);
   color: var(--texto);
+  overflow-x: hidden;
 }
 
 textarea::-webkit-scrollbar {
@@ -58,30 +59,32 @@ body::-webkit-scrollbar-thumb {
 }
 
 .inputs {
-  margin-top: 35px;
+  margin-top: 5px;
   width: 95%;
   display: flex;
   gap: 50px;
   justify-content: center;
+  align-items: center;
 }
-#JS_input,
-#HTML_input {
+.js,
+.html {
   width: 500px;
   display: flex;
   align-items: center;
+  justify-content: center;
   flex-direction: column;
 }
+
 main {
   transform: scale(100%);
-  min-width: 600px;
+  min-width: 85vw;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 50px;
-  width: 60vw;
+  width: 85vw;
   min-height: 500px;
-  height: 95vh;
   backdrop-filter: blur(16px) saturate(180%);
   -webkit-backdrop-filter: blur(16px) saturate(180%);
   background-color: var(--fundoTranparencia);
@@ -101,7 +104,7 @@ textarea {
   font-size: 1rem;
   margin-top: 15px;
   padding: 15px;
-  background: rgb(35, 35, 35);
+  background: #232323;
   color: white;
   border-radius: 10px;
   min-height: 60vh;
@@ -110,6 +113,11 @@ textarea {
   justify-content: flex-start;
   border-style: none;
   resize: none;
+}
+.CodeMirror {
+  font-size: 15px;
+  border-radius: 15px;
+  padding: 5px;
 }
 
 #btnSubmit {
@@ -137,6 +145,7 @@ textarea {
 #btnSubmit:hover {
   transform: scale(110%);
 }
+
 
 :root {
   --corFundo: var(--botao);
@@ -447,7 +456,9 @@ ul {
 }
 
 .card {
-  transform: translate(50px, -50px);
+  position: absolute;
+  right: 10px;
+  top:5px;
   width: 10px;
   height: 300px;
   border-radius: 20px;
@@ -456,33 +467,33 @@ ul {
   background-image: var(--botao);
   transition: 0.2s;
 }
+.botoesAba {
+  margin-top: 15px;
+  transform: scale(0%);
+  transition: .3s;
+  display: flex;
+  justify-content: space-evenly;
+  gap:30px;
+}
+.card:hover .botoesAba{
+  transform: scale(100%);
+}
+
 .card__content button:nth-child(1) {
   transform: scale(0%);
-  position: fixed;
-  bottom: 23px;
-  left: 25px;
   opacity: 0;
 }
 .card__content button:nth-child(2) {
   transform: scale(0%);
-  position: fixed;
-  bottom: 23px;
-  left: 90px;
   opacity: 0;
 }
 .card__content button:nth-child(3) {
   transform: scale(0%);
-  position: fixed;
-  bottom: 23px;
-  right: 90px;
   opacity: 0;
 }
 
 .card__content label {
   transform: scale(0%);
-  position: fixed;
-  bottom: 23px;
-  right: 25px;
   opacity: 0;
 }
 .card__content h2 {
@@ -501,6 +512,7 @@ ul {
   width: 100%;
   height: 100%;
 }
+
 
 .card:hover {
   width: 300px;

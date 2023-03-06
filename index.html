@@ -6,7 +6,16 @@
     <title>Smart Code</title>
     <link rel="stylesheet" href="./css/criar.css" />
     <link rel="shortcut icon" href="./src/img/favicon.svg" type="image/svg" />
-  </head>
+    <link rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/default.min.css">
+      <link rel="stylesheet" href="/plugin/codemirror-5.65.12/lib/codemirror.css">
+      <script src="/plugin/codemirror-5.65.12/lib/codemirror.js"></script>
+      <script src="/plugin/codemirror-5.65.12/mode/xml/xml.js"></script>
+      <link rel="stylesheet" href="/plugin/codemirror-5.65.12/theme/dracula.css">
+      <script src="/plugin/codemirror-5.65.12/mode/javascript/javascript.js"></script>
+      <script src="/plugin/codemirror-5.65.12/addon/edit/closetag.js"></script>
+      <script src="/plugin/codemirror-5.65.12/addon/hint/show-hint.js"></script>
+      </head>
   <body>
     <div class="seletorCor"><button class="seletorBtn" onclick="alterarCor()"></button></div>
     <div class="seletorCorFundo"><button class="seletorBtnFundo" onclick="alterarCorFundo()"></button></div>
@@ -85,13 +94,12 @@
       <div class="inputs">
         <div id="HTML_input">
           <label for="">HTML</label>
-          <textarea
+          <textarea 
           onkeyup="autoSave()"
             placeholder="Digite aqui seu código HTML"
             spellcheck="false"
             id="html_enter"
-            cols="30"
-            rows="10"
+            class="html"
           ></textarea>
         </div>
         <div id="JS_input">
@@ -101,8 +109,7 @@
           placeholder="Digite aqui seu código JavaScript"
             spellcheck="false"
             id="js_enter"
-            cols="30"
-            rows="10"
+            class="js"
           ></textarea>
         </div>
       </div>
@@ -110,18 +117,23 @@
     </main>
     <div class="card">
       <div class="card__content">
-        <button id="btnSalvar" title="Novo Projeto"><img src="/src/img/mais.svg" alt="" /></button>
-        <button id="btnEditar" title="Editar Projeto"><img src="/src/img/edit.svg" alt="" /></button>
-        <button id="btnDownload" title="Exportar Saves"><img src="/src/img/download.svg" alt="" /></button>
-        <label id="btnUpload" title="Importar Saves"><input id="inputFile" type="file"><img src="/src/img/upload.svg" alt="" /></input></label>
         <h2>Salvos</h2>
         <ul id="ulContainer">
-        </ul>
+          </ul>
+          <div class="botoesAba">
+          <button id="btnSalvar" title="Novo Projeto"><img src="/src/img/mais.svg" alt="" /></button>
+          <button id="btnEditar" title="Editar Projeto"><img src="/src/img/edit.svg" alt="" /></button>
+          <button id="btnDownload" title="Exportar Saves"><img src="/src/img/download.svg" alt="" /></button>
+          <label id="btnUpload" title="Importar Saves"><input id="inputFile" type="file"><img src="/src/img/upload.svg" alt="" /></input></label>
+        </div>
       </div>
     </div>
     <div id="smartCodeLogo"><h1>SMART-CODE </h1></div>
     <h6 id="criador">Criado por Jonathan Bergamo</h6>
   </body>
   <script type="text/javascript" src="./src/FileSaver.js"></script>
+  <script>
+
+  </script>
   <script src="./src/criar.js"></script>
 </html>
