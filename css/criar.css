@@ -58,6 +58,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 .inputs {
+  margin-top: 35px;
   width: 95%;
   display: flex;
   gap: 50px;
@@ -112,8 +113,10 @@ textarea {
 }
 
 #btnSubmit {
-  width: 140px;
+  width: 60px;
   height: 60px;
+  min-height: 60px;
+  min-width: 60px;
   display: flex;
   justify-content: center;
   font-size: 1rem;
@@ -121,6 +124,7 @@ textarea {
   box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.5);
   background: var(--botao);
   border-radius: 12px;
+  padding: 10px;
   margin-top: 5%;
   transition: 0.2s;
   color: white;
@@ -221,6 +225,7 @@ textarea {
   display: initial;
   width: 30px;
   transition: 0.3s;
+  transform: scale(80%);
 }
 
 .criarElemento #selectElement {
@@ -388,6 +393,7 @@ ul {
   display: initial;
   width: 30px;
   transition: 0.3s;
+  transform: scale(80%);
 }
 
 .textos {
@@ -540,7 +546,7 @@ ul {
   display: flex;
   align-items: center;
   background-image: var(--botao);
-  border-radius: 15px;
+  border-radius: 10px;
   padding: 5px;
   cursor: pointer;
 }
@@ -637,10 +643,9 @@ ul {
 
 #smartCodeLogo {
   position: absolute;
-  font-size: 2rem;
   rotate: 90deg;
-  right: -150px;
-  top: 250px;
+  right: 0px;
+  top: -200px;
   user-select: none;
   transition: 0.3s;
 }

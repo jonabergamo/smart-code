@@ -2,6 +2,7 @@ var dados = JSON.parse(localStorage.getItem("dados") || "[]");
 const html = document.querySelector("html");
 const body = document.querySelector("body");
 const main = document.querySelector("main");
+document.title = "Smart Code - " + dados.name;
 var data = new Date();
 var horas = data.getHours();
 

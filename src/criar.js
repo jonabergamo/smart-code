@@ -4,6 +4,7 @@ document.querySelector("#html_enter").innerHTML = dados.html || "";
 document.querySelector("#js_enter").innerHTML = dados.js || "";
 document.querySelector("#projectTitle").value =
   dados.name || "Project Undefined";
+document.title = "Smart Code - " + document.querySelector("#projectTitle").value;
 
 if (isEmpty(dados)) {
   document.body.style.setProperty(
@@ -246,6 +247,7 @@ ulContainer.addEventListener("click", function (e) {
   document.querySelector("#html_enter").value = saves[id].html;
   document.querySelector("#js_enter").value = saves[id].js;
   document.querySelector("#projectTitle").value = saves[id].name;
+  document.title = "Smart Code - " + saves[id].name;
   //document.body.style.setProperty("--botao", `${saves[id].color}`);
 });
 
