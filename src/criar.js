@@ -23,6 +23,7 @@ var editorJS = CodeMirror.fromTextArea(document.getElementById("js_enter"), {
   mode: "javascript",
   theme: "dracula",
   scrollbarStyle: "null",
+  lineNumbers: true,
   autoCloseTags: true,
   extraKeys: {
     Enter: autoSaveJS,
