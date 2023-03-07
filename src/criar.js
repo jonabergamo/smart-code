@@ -14,9 +14,7 @@ var editorHTML = CodeMirror.fromTextArea(
     scrollbarStyle: "null",
     autoCloseTags: true,
     lineNumbers: true,
-    extraKeys: {
-      Enter: autoSaveHTML,
-    },
+
   }
 );
 editorHTML.setSize("500", "300");
@@ -28,9 +26,7 @@ var editorJS = CodeMirror.fromTextArea(document.getElementById("js_enter"), {
   lineNumbers: true,
   autoCloseTags: true,
   autoCloseBrackets: true,
-  extraKeys: {
-    Enter: autoSaveJS,
-  },
+
 });
 editorJS.setSize("500", "300");
 editorHTML.getDoc().setValue(dados.html || "");
@@ -194,24 +190,17 @@ btnSalvar.addEventListener("click", function () {
   }, 150);
 });
 
-function autoSaveHTML() {
+setInterval(autoSave, 5000);
+
+function autoSave() {
   let projectTitle = document.querySelector("#projectTitle");
   document.querySelector("#saveName").value = projectTitle.value;
   setTimeout(function () {
     cardTela.style.display = "none";
   }, 150);
   confirmaSave();
-  editorHTML.replaceSelection("\n", "end");
 }
-function autoSaveJS() {
-  let projectTitle = document.querySelector("#projectTitle");
-  document.querySelector("#saveName").value = projectTitle.value;
-  setTimeout(function () {
-    cardTela.style.display = "none";
-  }, 150);
-  confirmaSave();
-  editorJS.replaceSelection("\n", "end");
-}
+
 
 cardTela.addEventListener("click", function (e) {
   e.stopPropagation();
