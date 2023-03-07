@@ -5,9 +5,6 @@ document.querySelector("#projectTitle").value =
 document.title =
   "Smart Code - " + document.querySelector("#projectTitle").value;
 
-var loader = document.querySelector("#loader");
-
-
 var editorHTML = CodeMirror.fromTextArea(
   document.getElementById("html_enter"),
   {
@@ -19,7 +16,7 @@ var editorHTML = CodeMirror.fromTextArea(
     lineNumbers: true,
   }
 );
-//editorHTML.setSize("500", "300");
+
 var editorJS = CodeMirror.fromTextArea(document.getElementById("js_enter"), {
   mode: "javascript",
   theme: "dracula",
@@ -29,9 +26,16 @@ var editorJS = CodeMirror.fromTextArea(document.getElementById("js_enter"), {
   autoCloseTags: true,
   autoCloseBrackets: true,
 });
-//editorJS.setSize("500", "300");
+
+
+window.addEventListener("load", function () {
+  setTimeout(loadCode, 100);
+});
+
+function loadCode() {
 editorHTML.getDoc().setValue(dados.html || "");
 editorJS.getDoc().setValue(dados.js || "");
+}
 
 if (isEmpty(dados)) {
   document.body.style.setProperty(
@@ -191,7 +195,7 @@ btnSalvar.addEventListener("click", function () {
   }, 150);
 });
 
-setInterval(autoSave, 2000);
+setInterval(autoSave, 10000);
 
 function autoSave() {
   let projectTitle = document.querySelector("#projectTitle");
