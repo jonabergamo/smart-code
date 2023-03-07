@@ -62,10 +62,23 @@ body::-webkit-scrollbar-thumb {
   margin-top: 5px;
   width: 95%;
   display: flex;
-  gap: 50px;
+  gap: 20px;
   justify-content: center;
   align-items: center;
+  flex-direction: row;
 }
+#HTML_input, #JS_input {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+}
+#HTML_input h2, #JS_input h2{
+  font-weight: 300;
+  color: #333333;
+  
+}
+
 .js,
 .html {
   width: 500px;
@@ -98,26 +111,14 @@ main {
 .expandir main {
   margin-left: 20%;
 }
-textarea {
-  font-weight: 500;
-  text-align: left;
-  font-size: 1rem;
-  margin-top: 15px;
-  padding: 15px;
-  background: #232323;
-  color: white;
-  border-radius: 10px;
-  min-height: 60vh;
-  width: 100%;
-  display: flex;
-  justify-content: flex-start;
-  border-style: none;
-  resize: none;
-}
+
 .CodeMirror {
   font-size: 15px;
   border-radius: 15px;
-  padding: 5px;
+  padding: 2px;
+  width: 35vw;
+  min-width: 35vw;
+  min-height: 60vh;
 }
 
 .CodeMirror * {
@@ -463,10 +464,10 @@ ul {
 
 .card {
   position: absolute;
-  right: 10px;
+  right: 15px;
   top:15px;
-  width: 10px;
-  height: 300px;
+  width: 30px;
+  height: 30px;
   border-radius: 20px;
   padding: 5px;
   background-image: var(--botao);
@@ -520,6 +521,7 @@ ul {
 
 
 .card:hover {
+  height: 600px;
   width: 300px;
 }
 
@@ -538,7 +540,7 @@ ul {
 
 .card #ulContainer {
   margin-top: 5px;
-  height: 60%;
+  height: 80%;
   width: 0px;
   border-radius: 15px;
   opacity: 0;

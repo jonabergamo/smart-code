@@ -14,12 +14,9 @@ var editorHTML = CodeMirror.fromTextArea(
     scrollbarStyle: "null",
     autoCloseTags: true,
     lineNumbers: true,
-    extraKeys: {
-      Enter: autoSaveHTML,
-    },
   }
 );
-editorHTML.setSize("500", "300");
+//editorHTML.setSize("500", "300");
 var editorJS = CodeMirror.fromTextArea(document.getElementById("js_enter"), {
   mode: "javascript",
   theme: "dracula",
@@ -28,11 +25,8 @@ var editorJS = CodeMirror.fromTextArea(document.getElementById("js_enter"), {
   lineNumbers: true,
   autoCloseTags: true,
   autoCloseBrackets: true,
-  extraKeys: {
-    Enter: autoSaveJS,
-  },
 });
-editorJS.setSize("500", "300");
+//editorJS.setSize("500", "300");
 editorHTML.getDoc().setValue(dados.html || "");
 editorJS.getDoc().setValue(dados.js || "");
 
@@ -194,23 +188,37 @@ btnSalvar.addEventListener("click", function () {
   }, 150);
 });
 
-function autoSaveHTML() {
+setInterval(autoSave, 2000);
+
+function autoSave() {
   let projectTitle = document.querySelector("#projectTitle");
   document.querySelector("#saveName").value = projectTitle.value;
-  setTimeout(function () {
-    cardTela.style.display = "none";
-  }, 150);
-  confirmaSave();
-  editorHTML.replaceSelection("\n", "end");
-}
-function autoSaveJS() {
-  let projectTitle = document.querySelector("#projectTitle");
-  document.querySelector("#saveName").value = projectTitle.value;
-  setTimeout(function () {
-    cardTela.style.display = "none";
-  }, 150);
-  confirmaSave();
-  editorJS.replaceSelection("\n", "end");
+  let texto_html = editorHTML.getValue();
+  let texto_js = editorJS.getValue();
+  let ulContainer = document.querySelector("#ulContainer");
+  let saveName = document.querySelector("#saveName").value;
+  let dia = data.toLocaleDateString();
+  let horario = data.toLocaleTimeString();
+  let createdAt = dia + " " + horario;
+  let corAtual = document.body.style.getPropertyValue("--botao");
+  let corAtualFundo = document.body.style.getPropertyValue("--fundo");
+
+  if (saves.find((c) => c.name == saveName)) {
+    let id = saves.find((c) => c.name == saveName).id;
+    saves[id].html = editorHTML.getValue();
+    saves[id].js = editorJS.getValue();
+    saves[id].createdAt = createdAt;
+
+    let dados = {
+      html: texto_html,
+      js: texto_js,
+      name: saveName,
+      color: [corAtual, corAtualFundo],
+    };
+
+    localStorage.setItem("dados", JSON.stringify(dados));
+    localStorage.setItem("saves", JSON.stringify(saves));
+  }
 }
 
 cardTela.addEventListener("click", function (e) {
@@ -252,6 +260,7 @@ function confirmaSave() {
     localStorage.setItem("dados", JSON.stringify(dados));
     localStorage.setItem("saves", JSON.stringify(saves));
   } else {
+   
     let save = {
       id: numID++,
       name: saveName,
