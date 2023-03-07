@@ -14,10 +14,9 @@ var editorHTML = CodeMirror.fromTextArea(
     scrollbarStyle: "null",
     autoCloseTags: true,
     lineNumbers: true,
-
   }
 );
-editorHTML.setSize("500", "300");
+
 var editorJS = CodeMirror.fromTextArea(document.getElementById("js_enter"), {
   mode: "javascript",
   theme: "dracula",
@@ -26,11 +25,15 @@ var editorJS = CodeMirror.fromTextArea(document.getElementById("js_enter"), {
   lineNumbers: true,
   autoCloseTags: true,
   autoCloseBrackets: true,
-
+  extraKeys: {
+    Enter: autoSaveJS,
+  },
 });
-editorJS.setSize("500", "300");
+
+function loadCode() {
 editorHTML.getDoc().setValue(dados.html || "");
 editorJS.getDoc().setValue(dados.js || "");
+}
 
 if (isEmpty(dados)) {
   document.body.style.setProperty(
@@ -190,15 +193,23 @@ btnSalvar.addEventListener("click", function () {
   }, 150);
 });
 
-setInterval(autoSave, 5000);
-
-function autoSave() {
+function autoSaveHTML() {
   let projectTitle = document.querySelector("#projectTitle");
   document.querySelector("#saveName").value = projectTitle.value;
   setTimeout(function () {
     cardTela.style.display = "none";
   }, 150);
   confirmaSave();
+  editorHTML.replaceSelection("\n", "end");
+}
+function autoSaveJS() {
+  let projectTitle = document.querySelector("#projectTitle");
+  document.querySelector("#saveName").value = projectTitle.value;
+  setTimeout(function () {
+    cardTela.style.display = "none";
+  }, 150);
+  confirmaSave();
+  editorJS.replaceSelection("\n", "end");
 }
 
 

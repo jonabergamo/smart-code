@@ -62,10 +62,23 @@ body::-webkit-scrollbar-thumb {
   margin-top: 5px;
   width: 95%;
   display: flex;
-  gap: 50px;
+  gap: 20px;
   justify-content: center;
   align-items: center;
+  flex-direction: row;
 }
+#HTML_input, #JS_input {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+}
+#HTML_input h2, #JS_input h2{
+  font-weight: 300;
+  color: #333333;
+  
+}
+
 .js,
 .html {
   width: 500px;
@@ -98,31 +111,19 @@ main {
 .expandir main {
   margin-left: 20%;
 }
-textarea {
-  font-weight: 500;
-  text-align: left;
-  font-size: 1rem;
-  margin-top: 15px;
-  padding: 15px;
-  background: #232323;
-  color: white;
-  border-radius: 10px;
-  min-height: 60vh;
-  width: 100%;
-  display: flex;
-  justify-content: flex-start;
-  border-style: none;
-  resize: none;
-}
+
 .CodeMirror {
   font-size: 15px;
   border-radius: 15px;
-  padding: 5px;
+  padding: 2px;
+  width: 35vw;
+  min-width: 35vw;
+  min-height: 60vh;
 }
 
 .CodeMirror * {
     font-family: 'Fira Code';
-    font-weight: 400;
+    font-weight: 300;
     font-size: 14px;
   }
 
@@ -463,10 +464,10 @@ ul {
 
 .card {
   position: absolute;
-  right: 10px;
-  top:15px;
-  width: 10px;
-  height: 300px;
+  right: 45px;
+  top:55px;
+  width: 30px;
+  height: 30px;
   border-radius: 20px;
   padding: 5px;
   background-image: var(--botao);
@@ -518,9 +519,9 @@ ul {
   height: 100%;
 }
 
-
 .card:hover {
   width: 300px;
+  height: 600px;
 }
 
 .card:hover button {
@@ -538,7 +539,7 @@ ul {
 
 .card #ulContainer {
   margin-top: 5px;
-  height: 60%;
+  height: 80%;
   width: 0px;
   border-radius: 15px;
   opacity: 0;
@@ -659,14 +660,16 @@ ul {
 
 #smartCodeLogo {
   position: absolute;
+  z-index: -5;
   rotate: 90deg;
-  right: 0px;
-  top: -200px;
+  right: -7%;
+  top: 28%;
   user-select: none;
-  transition: 0.3s;
 }
 
 #smartCodeLogo h1 {
+  font-weight: 500;
+  font-size: 3.5rem;
   background-color: #000000;
   background-image: var(--botao);
   background-size: 100%;
