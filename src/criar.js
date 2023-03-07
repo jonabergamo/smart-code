@@ -5,6 +5,9 @@ document.querySelector("#projectTitle").value =
 document.title =
   "Smart Code - " + document.querySelector("#projectTitle").value;
 
+var loader = document.querySelector("#loader");
+
+
 var editorHTML = CodeMirror.fromTextArea(
   document.getElementById("html_enter"),
   {
@@ -260,7 +263,6 @@ function confirmaSave() {
     localStorage.setItem("dados", JSON.stringify(dados));
     localStorage.setItem("saves", JSON.stringify(saves));
   } else {
-   
     let save = {
       id: numID++,
       name: saveName,
