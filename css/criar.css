@@ -1,6 +1,6 @@
 /*Adição da fonte Montserrat ao programa */
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;600;700;800;900&display=swap");
-
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code&display=swap');
 /* Zerando o padrão */
 * {
   margin: 0;
@@ -34,7 +34,7 @@ textarea::-webkit-scrollbar {
 }
 
 textarea::-webkit-scrollbar-track {
-  background: rgb(35, 35, 35);
+  background: #232323;
   border-radius: 20px; /* color of the tracking area */
 }
 
@@ -119,6 +119,12 @@ textarea {
   border-radius: 15px;
   padding: 5px;
 }
+
+.CodeMirror * {
+    font-family: 'Fira Code';
+    font-weight: 400;
+    font-size: 14px;
+  }
 
 #btnSubmit {
   width: 60px;

@@ -9,6 +9,7 @@ var editorHTML = CodeMirror.fromTextArea(
   document.getElementById("html_enter"),
   {
     mode: "xml",
+    lineWrapping: true,
     theme: "dracula",
     scrollbarStyle: "null",
     autoCloseTags: true,
@@ -22,9 +23,11 @@ editorHTML.setSize("500", "300");
 var editorJS = CodeMirror.fromTextArea(document.getElementById("js_enter"), {
   mode: "javascript",
   theme: "dracula",
+  lineWrapping: true,
   scrollbarStyle: "null",
   lineNumbers: true,
   autoCloseTags: true,
+  autoCloseBrackets: true,
   extraKeys: {
     Enter: autoSaveJS,
   },
