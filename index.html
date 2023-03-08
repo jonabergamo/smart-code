@@ -20,8 +20,8 @@
       <script src="/plugin/codemirror-5.65.12/addon/edit/closebrackets.js"></script>
       </head>
   <body>
-      <div class="seletorCor"><button class="seletorBtn" onclick="alterarCor()"></button></div>
-      <div class="seletorCorFundo"><button class="seletorBtnFundo" onclick="alterarCorFundo()"></button></div>
+    <!--<div class="seletorCor"><button class="seletorBtn" onclick="alterarCor()"></button></div>
+    <div class="seletorCorFundo"><button class="seletorBtnFundo" onclick="alterarCorFundo()"></button></div>-->
     <div class="cardTela">
       <div class="card__contentTela">
         <h2>Novo Projeto</h2>
@@ -104,6 +104,19 @@
             id="html_enter"
             class="html"
           ></textarea>
+        </div>
+        <div class="circle">
+          <div class="ring">
+            <div class="menuItem color" onclick="setarCor('#f407e5 0%,  #065ef3 100%')"><div id="cor1" class="color_content"></div></div>
+            <div class="menuItem color" onclick="setarCor('#396afc 0% , #2948ff 100%')"><div id="cor2" class="color_content"></div></div>
+            <div class="menuItem color" onclick="setarCor('#3dd73f 0% , #0bb88e 100%')"><div id="cor3" class="color_content"></div></div>
+            <div class="menuItem color" onclick="setarCor('#069ab0 0% , #07c049 100%')"><div id="cor4" class="color_content"></div></div>
+            <div class="menuItem color" onclick="setarCor('#f12711 0% , #f5af19 100%')"><div id="cor5" class="color_content"></div></div>
+            <div class="menuItem color" onclick="setarCor(' #f953c6 0%,  #b91d73 100%')"><div id="cor6" class="color_content"></div></div>
+            <div class="menuItem color" onclick="alterarCor()"><div id="cor7" class="color_content"><h2>?</h2></div></div>
+            <div class="menuItem color"onclick="setarCor('#ED213A 0%,  #93291E 100%')"><div id="cor8" class="color_content"></div></div>
+          </div>
+          <div  class="center"><div class="center_content"></div></div>
         </div>
         <div id="JS_input">
           <h2 for="">JS</h2>

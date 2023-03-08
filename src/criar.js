@@ -126,6 +126,7 @@ body.addEventListener("click", function (e) {
   if (cardEditar.style.display == "flex") {
     cardEditar.style.display = "none";
   }
+
 });
 
 criarInfo.addEventListener("click", function (e) {
@@ -189,42 +190,43 @@ var btnSalvar = document.querySelector("#btnSalvar");
 
 btnSalvar.addEventListener("click", function () {
   let projectTitle = document.querySelector("#projectTitle");
-  document.querySelector("#saveName").value = projectTitle.value;
   setTimeout(function () {
     cardTela.style.display = "flex";
   }, 150);
 });
 
-setInterval(autoSave, 10000);
+
+setInterval(autoSave, 2000);
+
+
 
 function autoSave() {
-  let projectTitle = document.querySelector("#projectTitle");
-  document.querySelector("#saveName").value = projectTitle.value;
-  let texto_html = editorHTML.getValue();
-  let texto_js = editorJS.getValue();
-  let ulContainer = document.querySelector("#ulContainer");
+    let projectTitle = document.querySelector("#projectTitle");
+    let texto_html = editorHTML.getValue();
+    let texto_js = editorJS.getValue();
+    let ulContainer = document.querySelector("#ulContainer");
   let saveName = document.querySelector("#saveName").value;
-  let dia = data.toLocaleDateString();
-  let horario = data.toLocaleTimeString();
-  let createdAt = dia + " " + horario;
-  let corAtual = document.body.style.getPropertyValue("--botao");
-  let corAtualFundo = document.body.style.getPropertyValue("--fundo");
-
-  if (saves.find((c) => c.name == saveName)) {
-    let id = saves.find((c) => c.name == saveName).id;
-    saves[id].html = editorHTML.getValue();
-    saves[id].js = editorJS.getValue();
-    saves[id].createdAt = createdAt;
-
-    let dados = {
-      html: texto_html,
-      js: texto_js,
-      name: saveName,
-      color: [corAtual, corAtualFundo],
-    };
-
-    localStorage.setItem("dados", JSON.stringify(dados));
-    localStorage.setItem("saves", JSON.stringify(saves));
+    let dia = data.toLocaleDateString();
+    let horario = data.toLocaleTimeString();
+    let createdAt = dia + " " + horario;
+    let corAtual = document.body.style.getPropertyValue("--botao");
+    let corAtualFundo = document.body.style.getPropertyValue("--fundo");
+  
+    if (saves.find((c) => c.name == projectTitle)) {
+      let id = saves.find((c) => c.name == projectTitle).id;
+      saves[id].html = editorHTML.getValue();
+      saves[id].js = editorJS.getValue();
+      saves[id].createdAt = createdAt;
+  
+      let dados = {
+        html: texto_html,
+        js: texto_js,
+        name: saveName,
+        color: [corAtual, corAtualFundo],
+      };
+  
+      localStorage.setItem("dados", JSON.stringify(dados));
+      localStorage.setItem("saves", JSON.stringify(saves));
   }
 }
 
@@ -296,7 +298,6 @@ function confirmaSave() {
 
 ulContainer.addEventListener("click", function (e) {
   let id = e.target.id;
-  console.log(id);
   editorHTML.getDoc().setValue(saves[id].html);
   editorJS.getDoc().setValue(saves[id].js);
   document.querySelector("#projectTitle").value = saves[id].name;
@@ -423,22 +424,19 @@ function alterarCor() {
   let randomColor2 = ((Math.random() * 0xffffff) << 0)
     .toString(16)
     .padStart(6, "0");
-  console.log(`#${randomColor1}  /  #${randomColor2}`);
+  console.log(`#${randomColor1} 0% , #${randomColor2} 100%`);
   document.body.style.setProperty(
     "--botao",
     `linear-gradient(to right, #${randomColor1}, #${randomColor2})`
   );
 }
-
-function alterarCorFundo() {
-  if (corFundo == "black") {
-    document.body.style.setProperty("--fundo", `white`);
-    corFundo = "white";
-  } else if (corFundo == "white") {
-    document.body.style.setProperty("--fundo", `black`);
-    corFundo = "black";
-  }
+function setarCor(cor) {
+  document.body.style.setProperty(
+    "--botao",
+    `linear-gradient(to right, ${cor})`
+  );
 }
+
 
 function isEmpty(obj) {
   for (var prop in obj) {
@@ -447,3 +445,17 @@ function isEmpty(obj) {
 
   return true;
 }
+
+var items = document.querySelectorAll('.menuItem');
+
+for(var i = 0, l = items.length; i < l; i++) {
+  items[i].style.left = (50 - 35*Math.cos(-0.5 * Math.PI - 2*(1/l)*i*Math.PI)).toFixed(4) + "%";
+  
+  items[i].style.top = (50 + 35*Math.sin(-0.5 * Math.PI - 2*(1/l)*i*Math.PI)).toFixed(4) + "%";
+}
+
+let center = document.querySelector('.center')
+center.addEventListener('click', function (e) {
+  e.preventDefault();
+  document.querySelector('.circle').classList.toggle('open');
+})
