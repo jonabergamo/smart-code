@@ -196,12 +196,12 @@ btnSalvar.addEventListener("click", function () {
 });
 
 
-setInterval(autoSave, 2000);
+setInterval(autoSave, 3000);
 
 
 
 function autoSave() {
-    let projectTitle = document.querySelector("#projectTitle");
+  let projectTitle = document.querySelector("#projectTitle").value;
     let texto_html = editorHTML.getValue();
     let texto_js = editorJS.getValue();
     let ulContainer = document.querySelector("#ulContainer");
