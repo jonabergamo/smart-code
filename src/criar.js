@@ -195,7 +195,7 @@ btnSalvar.addEventListener("click", function () {
 });
 
 
-setInterval(autoSave, 2000);
+setInterval(autoSave, 3000);
 
 
 
