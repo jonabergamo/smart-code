@@ -102,6 +102,7 @@ abaInfo.addEventListener("click", function (e) {
 });
 
 body.addEventListener("click", function (e) {
+  document.querySelector('.circle').classList.remove('open');
   if (textos.style.display == "flex") {
     textos.style.display = "none";
     html.classList.remove("expandir");
@@ -449,6 +450,7 @@ for(var i = 0, l = items.length; i < l; i++) {
 
 let center = document.querySelector('.center')
 center.addEventListener('click', function (e) {
+  e.stopPropagation();
   e.preventDefault();
   document.querySelector('.circle').classList.toggle('open');
 })
