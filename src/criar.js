@@ -42,10 +42,9 @@ if (isEmpty(dados)) {
     "--botao",
     "linear-gradient(257.91deg, #9e38e1 17.54%, #e0386b 72.93%)"
   );
-  document.body.style.setProperty("--fundo", "black");
   var corFundo = "black";
 } else {
-  document.body.style.setProperty("--botao", dados.color[0]);
+  document.body.style.setProperty("--botao", dados.color);
   var corFundo = dados.color;
 }
 const html = document.querySelector("html");
@@ -74,10 +73,7 @@ function criarHTML() {
     html: inputHTML,
     js: inputJS,
     name: saveName,
-    color: [
-      corAtual || "linear-gradient(257.91deg, #9e38e1 17.54%, #e0386b 72.93%)",
-      corAtualFundo || "black",
-    ],
+    color: corAtual || "linear-gradient(257.91deg, #9e38e1 17.54%, #e0386b 72.93%)",
   };
 
   localStorage.setItem("dados", JSON.stringify(dados));
@@ -399,10 +395,7 @@ function delSave() {
           html: saves[i].html,
           js: saves[i].js,
           createdAt: saves[i].createdAt,
-          color: [
-            "linear-gradient(257.91deg,#9e38e1 17.54%,#e0386b 72.93%)",
-            "black",
-          ],
+          color: "linear-gradient(257.91deg,#9e38e1 17.54%,#e0386b 72.93%)",
         };
         newId++;
         newSaves.push(newSave);

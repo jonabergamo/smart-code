@@ -8,9 +8,9 @@ var horas = data.getHours();
 
 document.body.style.setProperty(
   "--botao",
-  dados.color[0] || "linear-gradient(257.91deg,#9e38e1 17.54%,#e0386b 72.93%)"
+  dados.color || "linear-gradient(257.91deg,#9e38e1 17.54%,#e0386b 72.93%)"
 );
-document.body.style.setProperty("--fundo", dados.color[1] || "black");
+document.body.style.setProperty("--fundo", "black");
 
 main.innerHTML += dados.html;
 eval(dados.js);
