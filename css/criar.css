@@ -106,10 +106,10 @@ main {
   transition: 0.2s;
 }
 .expandirCriar main {
-  margin-left: 20%;
+  margin-left: 25%;
 }
 .expandir main {
-  margin-left: 20%;
+  margin-left: 25%;
 }
 
 .CodeMirror {
@@ -222,7 +222,7 @@ main {
 }
 
 .expandirCriar .instrucoes {
-  top: 45vh;
+  top: 30vh;
 }
 
 .expandirCriar .criarElemento .textosCriar {
@@ -798,7 +798,8 @@ transform: rotate(360deg);
 .ring {
   height: 180px;
   position: fixed;
-  top: 25%;
+  left: -4.5%;
+  top: -5%;
   z-index: 10000;
   width: 180px;
 }

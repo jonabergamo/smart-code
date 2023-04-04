@@ -46,8 +46,7 @@ if (isEmpty(dados)) {
   var corFundo = "black";
 } else {
   document.body.style.setProperty("--botao", dados.color[0]);
-  document.body.style.setProperty("--fundo", dados.color[1]);
-  var corFundo = dados.color[1];
+  var corFundo = dados.color;
 }
 const html = document.querySelector("html");
 const body = document.querySelector("body");
@@ -201,7 +200,8 @@ setInterval(autoSave, 2000);
 
 
 function autoSave() {
-    let projectTitle = document.querySelector("#projectTitle");
+  
+    let projectTitle = document.querySelector("#projectTitle").value;
     let texto_html = editorHTML.getValue();
     let texto_js = editorJS.getValue();
     let ulContainer = document.querySelector("#ulContainer");
@@ -210,7 +210,7 @@ function autoSave() {
     let horario = data.toLocaleTimeString();
     let createdAt = dia + " " + horario;
     let corAtual = document.body.style.getPropertyValue("--botao");
-    let corAtualFundo = document.body.style.getPropertyValue("--fundo");
+  let corAtualFundo = document.body.style.getPropertyValue("--fundo");
   
     if (saves.find((c) => c.name == projectTitle)) {
       let id = saves.find((c) => c.name == projectTitle).id;
@@ -222,7 +222,7 @@ function autoSave() {
         html: texto_html,
         js: texto_js,
         name: saveName,
-        color: [corAtual, corAtualFundo],
+        color: corAtual,
       };
   
       localStorage.setItem("dados", JSON.stringify(dados));
@@ -263,7 +263,7 @@ function confirmaSave() {
       html: texto_html,
       js: texto_js,
       name: saveName,
-      color: [corAtual, corAtualFundo],
+      color: corAtual,
     };
 
     localStorage.setItem("dados", JSON.stringify(dados));
@@ -282,7 +282,7 @@ function confirmaSave() {
       html: texto_html,
       js: texto_js,
       name: saveName,
-      color: [corAtual, corAtualFundo],
+      color: corAtual,
     };
     localStorage.setItem("dados", JSON.stringify(dados));
 
