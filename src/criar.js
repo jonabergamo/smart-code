@@ -42,10 +42,8 @@ if (isEmpty(dados)) {
     "--botao",
     "linear-gradient(257.91deg, #9e38e1 17.54%, #e0386b 72.93%)"
   );
-  var corFundo = "black";
 } else {
   document.body.style.setProperty("--botao", dados.color);
-  var corFundo = dados.color;
 }
 const html = document.querySelector("html");
 const body = document.querySelector("body");
@@ -67,7 +65,6 @@ function criarHTML() {
   let inputHTML = editorHTML.getValue();
   let saveName = document.querySelector("#projectTitle").value;
   let corAtual = document.body.style.getPropertyValue("--botao");
-  let corAtualFundo = document.body.style.getPropertyValue("--fundo");
 
   let dados = {
     html: inputHTML,
@@ -272,7 +269,7 @@ function confirmaSave() {
       html: texto_html,
       js: texto_js,
       createdAt: createdAt,
-      color: [corAtual, corAtualFundo],
+      color: corAtual,
     };
 
     let dados = {
