@@ -32,6 +32,7 @@ window.addEventListener("load", function () {
   setTimeout(loadCode, 100);
 });
 
+
 function loadCode() {
 editorHTML.getDoc().setValue(dados.html || "");
 editorJS.getDoc().setValue(dados.js || "");
@@ -182,7 +183,7 @@ btnCriar.addEventListener("click", function () {
 var btnSalvar = document.querySelector("#btnSalvar");
 
 btnSalvar.addEventListener("click", function () {
-  let projectTitle = document.querySelector("#projectTitle");
+  document.querySelector("#saveName").value = document.querySelector("#projectTitle").value;
   setTimeout(function () {
     cardTela.style.display = "flex";
   }, 150);
@@ -354,7 +355,6 @@ function confirmaEdit() {
   let horario = data.toLocaleTimeString();
   let createdAt = dia + " " + horario;
   let corAtual = document.body.style.getPropertyValue("--botao");
-  let corAtualFundo = document.body.style.getPropertyValue("--fundo");
 
   console.log(oldName);
   let saveSelected = saves.find((c) => c.name === oldName).id;
@@ -363,14 +363,14 @@ function confirmaEdit() {
   console.log(newSaveName);
   saves[saveSelected].name = newSaveName;
   saves[saveSelected].createdAt = createdAt;
-  saves[saveSelected].color = [corAtual, corAtualFundo];
+  saves[saveSelected].color = corAtual;
   console.log(saves[saveSelected]);
   localStorage.setItem("saves", JSON.stringify(saves));
   cardEditar.style.display = "none";
   dados.html = saves[saveSelected].html;
   dados.js = saves[saveSelected].js;
   dados.name = newSaveName;
-  dados.color = [corAtual, corAtualFundo];
+  dados.color = corAtual;
   localStorage.setItem("dados", JSON.stringify(dados));
   location.reload();
 }
