@@ -3,7 +3,7 @@
 Smart-Code é uma ferramenta educativa criada para facilitar o aprendizado de JavaScript e HTML. Este software, desenvolvido como parte de um projeto de faculdade para o curso de Análise e Desenvolvimento de Sistemas, permite que os alunos experimentem o desenvolvimento web de maneira rápida e eficaz, sem se preocupar com a estilização.
 
 
-## Acesse o site [Aqui]([https://jonathanbergamo.netlify.app](https://jonathanbergamo.netlify.app](https://smart-code-senai.netlify.app))
+## Acesse o site [Aqui]([(https://smart-code-senai.netlify.app)])
 
 <img src="https://firebasestorage.googleapis.com/v0/b/react-auth-31116.appspot.com/o/imagem_2023-07-26_201930273.png?alt=media&token=761a5a3b-a520-48b3-b0ab-6afa34b81da7" alt="Texto alternativo" />
 
