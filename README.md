@@ -5,7 +5,7 @@ Smart-Code é uma ferramenta educativa criada para facilitar o aprendizado de Ja
 
 ## Acesse o site [Aqui](https://smart-code-senai.netlify.app)
 
-<img src="https://firebasestorage.googleapis.com/v0/b/react-auth-31116.appspot.com/o/imagem_2023-07-26_201930273.png?alt=media&token=761a5a3b-a520-48b3-b0ab-6afa34b81da7" alt="Texto alternativo" />
+<a href="https://smart-code-senai.netlify.app"><img src="https://firebasestorage.googleapis.com/v0/b/react-auth-31116.appspot.com/o/imagem_2023-07-26_201930273.png?alt=media&token=761a5a3b-a520-48b3-b0ab-6afa34b81da7" alt="Texto alternativo" /><a/>
 
 ## Funcionalidades
 
