@@ -11,6 +11,14 @@ Smart-Code é uma ferramenta educativa criada para facilitar o aprendizado de Ja
 
 Smart-Code possui duas caixas de texto, uma para HTML e outra para JavaScript. Os usuários podem escrever o código nessas caixas e clicar no botão 'Run' para gerar uma página web usando o HTML e JavaScript fornecidos. O software aplica automaticamente um agradável CSS pré-programado.
 
+Além disso, o Smart-Code também permite:
+
+- Adicionar elementos de forma rápida
+- Mudar cores na estilização
+- Salvar projetos para futuras edições
+- Fazer download de todos os seus projetos em um arquivo separado
+- Fazer upload de arquivos de projeto para recuperação e edição
+
 ## Requisitos
 
 Smart-Code é uma aplicação web e pode ser acessada através de qualquer navegador. No entanto, foi projetada principalmente para uso em desktop.
