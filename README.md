@@ -41,4 +41,4 @@ Se você tiver alguma dúvida ou sugestão sobre o projeto, sinta-se à vontade 
 
 Sinta-se à vontade para me contatar por qualquer um desses canais. Ficarei feliz em ajudar ou receber feedback sobre o projeto.
 
-<img src="./src/assets/signature.svg">
+<img src="https://jonathanbergamo.netlify.app/static/media/signature.badcdf4beae3f9eb34135086f2354217.svg">
